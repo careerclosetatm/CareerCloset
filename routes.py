@@ -231,6 +231,7 @@ if __name__=="__main__":
     app.config["MAIL_USE_SSL"] = True
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
+	app.config["WTF_CSRF_ENABLED"] = True
     mail.init_app(app)
     
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'

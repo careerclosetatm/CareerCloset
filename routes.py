@@ -89,7 +89,7 @@ def signin():
                  
     elif request.method == 'GET':
         return render_template('signin.html', form=form)
-
+		
 @app.route('/signout')
 def signout():
  
@@ -232,12 +232,12 @@ if __name__=="__main__":
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
 	#wtf updated
-	app.config["WTF_CSRF_ENABLED"] = True
+    app.config["WTF_CSRF_ENABLED"] = True
     mail.init_app(app)
     
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
     from models import db
-    db.init_app(app)    
+    db.init_app(app)
     with app.test_request_context():
         #db.drop_all()
         #User.__table__.drop(engine)
@@ -767,10 +767,7 @@ if __name__=="__main__":
     
             
             
-    
-
     port = int(os.environ.get('PORT',5000))
-	
     app.run(host='0.0.0.0',port=port,debug=True)
     
 

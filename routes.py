@@ -226,7 +226,7 @@ def contact():
         return render_template("contact.html", form=form)
 
 if __name__=="__main__":
-    #app.secret_key = "12345667"
+    app.secret_key = "12345667"
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
     app.config["MAIL_PORT"] = 465
     app.config["MAIL_USE_SSL"] = True

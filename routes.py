@@ -234,6 +234,7 @@ if __name__=="__main__":
     app.config["MAIL_PASSWORD"] = 'Group5Password'
 	#wtf updated
     app.config["SECRET_KEY"] = "123456789"
+    app.config["WTF_CSRF_SECRET_KEY"] = "123456789"
     app.config["WTF_CSRF_ENABLED"] = True
     mail.init_app(app)
     csrf = CSRFProtect()

@@ -232,7 +232,11 @@ def contact():
 if __name__=="__main__":
     print("Inside main")
     app.secret_key = "12345667"
+    print(app.secret_key)
+    
+    
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
+    print(app.mail_server)
     app.config["MAIL_PORT"] = 465
     app.config["MAIL_USE_SSL"] = True
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'

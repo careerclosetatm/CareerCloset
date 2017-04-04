@@ -207,7 +207,6 @@ def appointment():
 def contact():
     print("Entering ContactForm")
     print(app.secret_key)
-    print(app.mail_server)
     form = ContactForm()
     print("Inside ContactForm")
     if request.method == "POST":
@@ -232,14 +231,9 @@ def contact():
 
         
 app.secret_key = "12345667"
-if __name__=="__main__":
-    print("Inside main")
+if __name__=="__main__":    
     app.secret_key = "12345667"
-    print(app.secret_key)
-    
-    
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
-    print(app.mail_server)
     app.config["MAIL_PORT"] = 465
     app.config["MAIL_USE_SSL"] = True
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'

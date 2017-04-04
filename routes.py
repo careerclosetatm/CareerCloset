@@ -238,6 +238,7 @@ if __name__=="__main__":
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
     mail.init_app(app)
+    app.config['SESSION_TYPE'] = 'filesystem'
     
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
     from models import db

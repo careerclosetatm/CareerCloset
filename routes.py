@@ -230,6 +230,7 @@ def contact():
 
         
 app.secret_key = "12345667"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 if __name__=="__main__":    
     app.secret_key = "12345667"
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
@@ -238,7 +239,6 @@ if __name__=="__main__":
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
     mail.init_app(app)
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SESSION_TYPE'] = 'filesystem'
     
     

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+ 
+{% block content %}
+  <h2>Sign up</h2>
+ 
+  {% for message in form.username.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+ 
+  {% for message in form.fullname.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  
+  {% for message in form.email.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  
+  {% for message in form.uin.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+   
+  {% for message in form.password.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  
+  
+
+<!--    
+  <form action="{{ url_for('signup') }}" method=post>
+    {{ form.hidden_tag() }}
+
+    {{ form.username.label }}
+    {{ form.username }}
+
+    {{ form.fullname.label }}
+    {{ form.fullname }}
+     
+    {{ form.email.label }}
+    {{ form.email }}
+
+    {{ form.uin.label }}
+    {{ form.uin }}     
+     
+    {{ form.password.label }}
+    {{ form.password }}
+     
+    {{ form.submit }}
+  </form>
+     
+     --> 
+	<form class="form-horizontal" action="{{ url_for('signup') }}" method=post>
+	{{ form.hidden_tag() }}
+                    <fieldset>
+                      <!-- Sign Up Form -->
+                      <!-- Text input-->
+                      <div class="control-group">
+                        <label class="control-label" for="email">Email:</label>
+                        <div class="controls">
+                          <input id="email" name="email" class="form-control" type="text" placeholder="Aggie@tamu.edu" class="input-large" required="">
+                        </div>
+                      </div>
+
+                      <!-- Text input-->
+                      <div class="control-group">
+                        <label class="control-label" for="username">Username:</label>
+                        <div class="controls">
+                          <input id="username" name="username" class="form-control" type="text" placeholder="Aggie" class="input-large" required="">                          
+                        </div>
+                      </div>
+
+                      <!-- Text input-->
+                      <div class="control-group">
+                        <label class="control-label" for="fullname">Full Name</label>
+                        <div class="controls">
+                          <input id="fullname" name="fullname" class="form-control" type="text" placeholder="Aggie Whoop" class="input-large" required="">
+                        </div>
+                      </div>
+
+                      <!-- Password input-->
+                      <div class="control-group">
+                        <label class="control-label" for="password">Password:</label>
+                        <div class="controls">
+                          <input id="password" name="password" class="form-control" type="password" placeholder="" class="input-large" required="">                          
+                        </div>
+                      </div>
+
+                      <!-- Text input-->
+                      <div class="control-group">
+                        <label class="control-label" for="uin">UIN:</label>
+                        <div class="controls">
+                          <input id="uin" name="uin" class="form-control" type="text" placeholder="123456789" class="input-large" required="">
+                          <em>9 digits</em>
+                        </div>
+                      </div>
+                      
+                      <!-- Button -->
+                      <div class="control-group">
+                        <label class="control-label" for="submit"></label>
+                        <div class="controls">
+                          <button id="submit" name="submit" class="btn btn-primary">Sign Up</button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>     
+{% endblock %}

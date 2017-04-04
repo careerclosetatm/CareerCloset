@@ -1,0 +1,288 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!--<h2> Availability </h2>
+
+	{% if success %}
+	<p>Found these suits for your match</p>
+	
+	<p>Current availability:</p>
+	<p>Small : {{scount}}</p>
+	<p>Medium : {{mcount}}</p>
+	<p>Large : {{lcount}}</p>
+	
+	<p>Corrosponding suits for validation purpose</p>
+	{% for suit in suits %}
+		<p>{{ suit.suit_id }}    {{suit.gender}}    {{suit.size}}     {{suit.type}}</p>
+	{% endfor %}
+	-->
+<!-- 	<p> {{ suits}} </p> -->
+<!--
+	{% else %}
+
+
+		{% for message in form.gender.errors %}
+		  <div class="flash">{{ message }}</div>
+		{% endfor %}
+		 
+		{% for message in form.type.errors %}
+		  <div class="flash">{{ message }}</div>
+		{% endfor %}
+		 
+		<form action = "{{url_for('availability')}}" method = post>
+		
+		{{form.hidden_tag()}}
+		
+		{{form.gender.label}}
+		{{form.gender}}
+		
+		{{form.type.label}}
+		{{form.type}}
+		
+		
+		{{form.submit}}
+		
+		</form>
+	{% endif %}
+-->
+
+  
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Availability                    
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active">Availability</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Image Header -->
+        <div class="row">
+            <div class="col-lg-12">
+                <img class="img-responsive" src="http://placehold.it/1200x300" alt="">
+            </div>
+        </div>
+        <!-- /.row -->
+        <!-- Content Row -->
+        <div class="row">
+          <div class="col-lg-12">
+              <h2 class="page-header">Choose Your Suit Type</h2>
+          </div>
+            <div class="col-lg-12">
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Men's Jacket</a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                              <div class="row">
+                                <div class="col-sm-6">
+                                  <img class="img-responsive img-portfolio img-hover img-cell" src="..\static\img\Suits\MJacket.jpg" alt="">
+                                </div>
+                                <div class="col-sm-6">
+                                  <h1>Availability Chart</h1>
+                                  <table>
+                                    <tr>
+                                      <th>Size</th>
+                                      <th>Availability</th>
+                                    </tr>
+                                    <tr>
+                                      <td>S</td>
+                                      <td>{{mj[0]}}/{{tmj[0]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>M</td>
+                                      <td>{{mj[1]}}/{{tmj[1]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>L</td>
+                                      <td>{{mj[2]}}/{{tmj[2]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XL</td>
+                                      <td>{{mj[3]}}/{{tmj[3]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XXL</td>
+                                      <td>{{mj[4]}}/{{tmj[4]}}</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Men's Pants</a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <img class="img-responsive img-portfolio img-hover img-cell" src="..\static\img\Suits\MPants.jpg" alt="">
+                              </div>
+                              <div class="col-sm-8">
+                                <h1>Availability Chart</h1>
+                                <table>
+                                  <tr>
+                                    <th>Size</th>
+                                    <th>Availability</th>
+                                  </tr>
+                                  <tr>
+                                      <td>S</td>
+                                      <td>{{mp[0]}}/{{tmp[0]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>M</td>
+                                      <td>{{mp[1]}}/{{tmp[1]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>L</td>
+                                      <td>{{mp[2]}}/{{tmp[2]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XL</td>
+                                      <td>{{mp[3]}}/{{tmp[3]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XXL</td>
+                                      <td>{{mp[4]}}/{{tmp[4]}}</td>
+                                    </tr>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">Women's Jacket</a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <img class="img-responsive img-portfolio img-hover img-cell" src="..\static\img\Suits\WJacket.jpg" alt="">
+                              </div>
+                              <div class="col-sm-8">
+                                <h1>Availability Chart</h1>
+                                <table>
+                                  <tr>
+                                    <th>Size</th>
+                                    <th>Availability</th>
+                                  </tr>
+                                  <tr>
+                                      <td>S</td>
+                                      <td>{{fj[0]}}/{{tfj[0]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>M</td>
+                                      <td>{{fj[1]}}/{{tfj[1]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>L</td>
+                                      <td>{{fj[2]}}/{{tfj[2]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XL</td>
+                                      <td>{{fj[3]}}/{{tfj[3]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XXL</td>
+                                      <td>{{fj[4]}}/{{tfj[4]}}</td>
+                                    </tr>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.panel -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">Women's Pants</a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                          <div class="panel-body">
+                            <div class="row">
+                              <div class="col-sm-4">
+                                <img class="img-responsive img-portfolio img-hover img-cell" src="..\static\img\Suits\WPants.jpg" alt="">
+                              </div>
+                              <div class="col-sm-8">
+                                <h1>Availability Chart</h1>                                
+                                <table>
+                                  <tr>
+                                    <th>Size</th>
+                                    <th>Availability</th>
+                                  </tr>
+                                  <tr>
+                                      <td>S</td>
+                                      <td>{{fp[0]}}/{{tfp[0]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>M</td>
+                                      <td>{{fp[1]}}/{{tfp[1]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>L</td>
+                                      <td>{{fp[2]}}/{{tfp[2]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XL</td>
+                                      <td>{{fp[3]}}/{{tfp[3]}}</td>
+                                    </tr>
+                                    <tr>
+                                      <td>XXL</td>
+                                      <td>{{fp[4]}}/{{tfp[4]}}</td>
+                                    </tr>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.panel -->
+
+                </div>
+                <!-- /.panel-group -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+		<!-- jQuery -->
+    <script src="..\static\js\jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="..static\js\bootstrap.min.js"></script>
+
+        <hr>
+
+{% endblock %}
+
+
+
+
+ 

@@ -230,6 +230,8 @@ def contact():
         print("contact get")
         return render_template("contact.html", form=form)
 
+        
+app.secret_key = "12345667"
 if __name__=="__main__":
     print("Inside main")
     app.secret_key = "12345667"
@@ -244,6 +246,7 @@ if __name__=="__main__":
     app.config["MAIL_PASSWORD"] = 'Group5Password'
     mail.init_app(app)
     app.config['SESSION_TYPE'] = 'filesystem'
+    
     
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
     from models import db

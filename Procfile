@@ -1,1 +1,1 @@
-web: python dealscraper/hello.py
+web: python dealscraper/routes.py

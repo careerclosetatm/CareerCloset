@@ -1,1 +1,1 @@
-web: python routes.py
+web: gunicorn routes:app --worker-class gevent

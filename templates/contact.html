@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<!--<h2> Contact </h2>
+
+{% if success %}
+	<p>Thank you for your message. Will get back to you..</p>
+
+{% else %}
+	{% for message in form.name.errors %}
+	  <div class="flash">{{ message }}</div>
+	{% endfor %}
+	 
+	{% for message in form.email.errors %}
+	  <div class="flash">{{ message }}</div>
+	{% endfor %}
+
+	{% for message in form.phone.errors %}
+	  <div class="flash">{{ message }}</div>
+	{% endfor %}
+	 
+	{% for message in form.subject.errors %}
+	  <div class="flash">{{ message }}</div>
+	{% endfor %}
+	 
+	{% for message in form.message.errors %}
+	  <div class="flash">{{ message }}</div>
+	{% endfor %}
+	
+	<form action = "{{url_for('contact')}}" method = post>
+	
+	{{form.hidden_tag()}}
+	
+	{{form.name.label}}
+	{{form.name}}
+	
+	{{form.email.label}}
+	{{form.email}}
+
+	{{form.phone.label}}
+	{{form.phone}}
+	
+	{{form.subject.label}}
+	{{form.subject}}
+	
+	{{form.message.label}}
+	{{form.message}}
+	
+	{{form.submit}}
+	
+	</form>
+{% endif %}
+-->
+
+
+   <!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Contact Us
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active">Contact</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Map Column -->
+            <div class="col-md-8">
+                <!-- Embedded Google Map -->
+                <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d858.4428874298925!2d-96.3416775707998!3d30.612206298854954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86468399006b6987%3A0x2cbd5b233b9e68d9!2s275+Joe+Routt+Blvd%2C+College+Station%2C+TX+77840!5e0!3m2!1sen!2sus!4v1490997104206"></iframe>
+            </div>
+            <!-- Contact Details Column -->
+            <div class="col-md-4">
+                <h3>Contact Details</h3>
+                <p>
+                    MSC Room L428<br>Texas A&M University, College Station, TX 77843<br>
+                </p>
+                <p><i class="fa fa-phone"></i>
+                    <abbr title="Phone">P</abbr>: (123) 456-7890</p>
+                <p><i class="fa fa-envelope-o"></i>
+                    <abbr title="Email">E</abbr>: <a href="mailto:careerclosetatm@gmail.com">careerclosetatm@gmail.com</a>
+                </p>
+                <p><i class="fa fa-clock-o"></i>
+                    <abbr title="Hours">H</abbr>: Monday - Friday: 9:00 AM to 5:00 PM</p>
+                <ul class="list-unstyled list-inline list-social-icons">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Contact Form -->
+        <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Send us a Message</h3>
+                <form name="sentMessage" id="contactForm" novalidate>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Full Name:</label>
+                            <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Phone Number:</label>
+                            <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Email Address:</label>
+                            <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+                        </div>
+                    </div>
+                    <div class="control-group form-group">
+                        <div class="controls">
+                            <label>Message:</label>
+                            <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+                        </div>
+                    </div>
+                    <div id="success"></div>
+                    <!-- For success/fail messages -->
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+    </div>
+    <!-- /.container -->
+ <!-- Contact Form JavaScript -->
+    <!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+    <script src="..\static\js\jqBootstrapValidation.js"></script>
+    <script src="..\static\js\contact_me.js"></script>
+
+
+{% endblock %}
+
+
+
+ 

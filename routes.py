@@ -80,8 +80,9 @@ def signup():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
+    
     form = SigninForm()
-   
+    print("Inside SignInForm")
     if request.method == 'POST':
         if form.validate() == False:
             return render_template('signin.html', form=form)
@@ -204,8 +205,10 @@ def appointment():
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    print("Entering ContactForm")
+    print(app.secret_key)
     form = ContactForm()
-    
+    print("Inside ContactForm")
     if request.method == "POST":
         print("contact post")
         if form.validate() == False:
@@ -227,18 +230,14 @@ def contact():
         return render_template("contact.html", form=form)
 
 if __name__=="__main__":
+    print("Inside main")
     app.secret_key = "12345667"
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
     app.config["MAIL_PORT"] = 465
     app.config["MAIL_USE_SSL"] = True
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
-	#wtf updated
-    app.config["SECRET_KEY"] = "123456789"
-    #app.config["WTF_CSRF_SECRET_KEY"] = "123456789"
-    app.config["WTF_CSRF_ENABLED"] = True
     mail.init_app(app)
-    csrf = CSRFProtect()
     
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
     from models import db

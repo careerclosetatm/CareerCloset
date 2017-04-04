@@ -4,6 +4,7 @@ from wtforms import TextField, TextAreaField, SubmitField, validators, Validatio
 from models import db, User
 
 class ContactForm(Form):
+    print("Inside ContactForm actual form")
     name = TextField("Name", [validators.Required("Please enter a name")])
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
     phone = TextField("Phone", [validators.Required("Please enter a phone number")])
@@ -38,12 +39,12 @@ class SignupForm(Form):
         else:
             return True
         
-class SigninForm(Form):
+class SigninForm(Form):    
     email = TextField("Email",  [validators.Required("Please enter your email address."), validators.Email("Please enter a valid email address.")])
     password = PasswordField('Password', [validators.Required("Please enter a password.")])
     submit = SubmitField("Sign In")
      
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):        
         Form.__init__(self, *args, **kwargs)
     
     def validate(self):

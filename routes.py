@@ -207,6 +207,7 @@ def appointment():
 def contact():
     print("Entering ContactForm")
     print(app.secret_key)
+    print(app.mail_server)
     form = ContactForm()
     print("Inside ContactForm")
     if request.method == "POST":

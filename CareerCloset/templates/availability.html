@@ -6,12 +6,12 @@
 
 	{% if success %}
 	<p>Found these suits for your match</p>
-	
+
 	<p>Current availability:</p>
 	<p>Small : {{scount}}</p>
 	<p>Medium : {{mcount}}</p>
 	<p>Large : {{lcount}}</p>
-	
+
 	<p>Corrosponding suits for validation purpose</p>
 	{% for suit in suits %}
 		<p>{{ suit.suit_id }}    {{suit.gender}}    {{suit.size}}     {{suit.type}}</p>
@@ -25,30 +25,30 @@
 		{% for message in form.gender.errors %}
 		  <div class="flash">{{ message }}</div>
 		{% endfor %}
-		 
+
 		{% for message in form.type.errors %}
 		  <div class="flash">{{ message }}</div>
 		{% endfor %}
-		 
+
 		<form action = "{{url_for('availability')}}" method = post>
-		
+
 		{{form.hidden_tag()}}
-		
+
 		{{form.gender.label}}
 		{{form.gender}}
-		
+
 		{{form.type.label}}
 		{{form.type}}
-		
-		
+
+
 		{{form.submit}}
-		
+
 		</form>
 	{% endif %}
 -->
 
-  
-  
+
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Page Content -->
@@ -57,7 +57,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Availability                    
+                <h1 class="page-header">Availability
                 </h1>
                 <ol class="breadcrumb">
                     <li><a href="index.html">Home</a>
@@ -232,7 +232,7 @@
                                 <img class="img-responsive img-portfolio img-hover img-cell" src="..\static\img\Suits\WPants.jpg" alt="">
                               </div>
                               <div class="col-sm-8">
-                                <h1>Availability Chart</h1>                                
+                                <h1>Availability Chart</h1>
                                 <table>
                                   <tr>
                                     <th>Size</th>
@@ -272,6 +272,8 @@
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
+    </div>
+    <!--/.container -->
 		<!-- jQuery -->
     <script src="..\static\js\jquery.js"></script>
 
@@ -281,8 +283,3 @@
         <hr>
 
 {% endblock %}
-
-
-
-
- 

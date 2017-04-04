@@ -140,7 +140,7 @@ margin-left: -11px;
 top: -15px;
 left: 97%;
 }
-/* error page space invaders game css */
+/* space invaders game css */
 .invaders{
   max-width: auto;
   max-height: auto;
@@ -152,7 +152,7 @@ canvas {
   position :relative;
   max-width: 100%;
   max-height: 100%;
-  background-color: #000;
+  background-color: #500000;
   margin: 0;
   padding:0;
   line-height: 0;
@@ -219,7 +219,7 @@ canvas {
   left: 89%;
   }
 }
-/*Login Modal Module*/
+/*Login Modal Module - Will Test again for final prototype
 .prettyline {
   height: 5px;
   border-top: 0;
@@ -229,4 +229,4 @@ canvas {
   background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-}
+}*/

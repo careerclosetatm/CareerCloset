@@ -55,7 +55,6 @@ def checkout():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
-    print form.meta
     if request.method == 'POST':
         print "post requesting"
         if form.validate() == False:       
@@ -239,6 +238,7 @@ if __name__=="__main__":
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
     mail.init_app(app)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SESSION_TYPE'] = 'filesystem'
     
     

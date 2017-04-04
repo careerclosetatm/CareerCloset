@@ -9,7 +9,7 @@ import os
 
 mail = Mail()
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 @app.route("/")
 def home():
@@ -225,18 +225,18 @@ def contact():
         return render_template("contact.html", form=form)
 
 if __name__=="__main__":
-    app.secret_key = "12345667"
-    app.config["MAIL_SERVER"] = "smtp.gmail.com"
-    app.config["MAIL_PORT"] = 465
-    app.config["MAIL_USE_SSL"] = True
-    app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
-    app.config["MAIL_PASSWORD"] = 'Group5Password'
-    mail.init_app(app)
+    application.secret_key = "12345667"
+    application.config["MAIL_SERVER"] = "smtp.gmail.com"
+    application.config["MAIL_PORT"] = 465
+    application.config["MAIL_USE_SSL"] = True
+    application.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
+    application.config["MAIL_PASSWORD"] = 'Group5Password'
+    mail.init_app(application)
     
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
+    application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
     from models import db
-    db.init_app(app)    
-    with app.test_request_context():
+    db.init_app(application)    
+    with application.test_request_context():
         #db.drop_all()
         #User.__table__.drop(engine)
         db.create_all()
@@ -769,6 +769,6 @@ if __name__=="__main__":
 
     port = int(os.environ.get('PORT',5000))
 	
-    app.run(host='0.0.0.0',port=port,debug=True)
+    application.run(host='0.0.0.0',port=port,debug=True)
     
 

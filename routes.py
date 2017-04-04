@@ -5,6 +5,7 @@ from flask_mail import Message, Mail
 from models import db, User, Suits, Schedule
 from sqlalchemy import or_, and_, engine, table
 import datetime
+import os
 
 mail = Mail()
 
@@ -766,7 +767,8 @@ if __name__=="__main__":
             
     
 
-        
-    app.run(debug=True)
+    port = int(os.environ.get('PORT',5000))
+	
+    app.run(host='0.0.0.0',port=port,debug=True)
     
 

@@ -16,8 +16,7 @@ class CheckoutForm(Form):
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
     submit = SubmitField("Checkout")
 
-class SignupForm(Form):
-    SECRET_KEY = "123456789"
+class SignupForm(Form):    
     username = TextField("Username",  [validators.Required("Please enter your preferred username.")])
     fullname = TextField("Full name",  [validators.Required("Please enter your full name.")])    
     email = TextField("Email",  [validators.Required("Please enter your email address."), validators.Email("Please enter a valid email address.")])

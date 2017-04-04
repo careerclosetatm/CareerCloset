@@ -6,6 +6,7 @@ from models import db, User, Suits, Schedule
 from sqlalchemy import or_, and_, engine, table
 import datetime
 import os
+from flask_wtf.csrf import CSRFProtect
 
 mail = Mail()
 
@@ -235,6 +236,7 @@ if __name__=="__main__":
     app.config["SECRET_KEY"] = "123456789"
     app.config["WTF_CSRF_ENABLED"] = True
     mail.init_app(app)
+    csrf = CSRFProtect()
     
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
     from models import db

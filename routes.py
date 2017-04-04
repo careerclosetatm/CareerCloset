@@ -225,13 +225,14 @@ def contact():
         return render_template("contact.html", form=form)
 
 if __name__=="__main__":
-    app.secret_key = "12345667"
+    #app.secret_key = "12345667"
     app.config["MAIL_SERVER"] = "smtp.gmail.com"
     app.config["MAIL_PORT"] = 465
     app.config["MAIL_USE_SSL"] = True
     app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
     app.config["MAIL_PASSWORD"] = 'Group5Password'
 	#wtf updated
+    app.config["SECRET_KEY"] = "123456789"
     app.config["WTF_CSRF_ENABLED"] = True
     mail.init_app(app)
     

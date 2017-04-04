@@ -231,24 +231,25 @@ def contact():
         
 app.secret_key = "12345667"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = "12345667"
+app.config["MAIL_SERVER"] = "smtp.gmail.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
+app.config["MAIL_PASSWORD"] = 'Group5Password'
+mail.init_app(app)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
+from models import db
+db.init_app(app)
+with app.test_request_context():
+    #db.drop_all()
+    #User.__table__.drop(engine)
+    db.create_all()
+
 if __name__=="__main__":    
-    app.secret_key = "12345667"
-    app.config["MAIL_SERVER"] = "smtp.gmail.com"
-    app.config["MAIL_PORT"] = 465
-    app.config["MAIL_USE_SSL"] = True
-    app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
-    app.config["MAIL_PASSWORD"] = 'Group5Password'
-    mail.init_app(app)
-    app.config['SESSION_TYPE'] = 'filesystem'
+
     
-    
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
-    from models import db
-    db.init_app(app)
-    with app.test_request_context():
-        #db.drop_all()
-        #User.__table__.drop(engine)
-        db.create_all()
 #         suit1=Suits("SID001","M","S","Jacket",True)
 #         suit2=Suits("SID002","M","S","Jacket",True)
 #         suit3=Suits("SID003","M","S","Jacket",True)

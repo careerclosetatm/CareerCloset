@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">404
+                    <small>Page Not Found</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="active">404</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="jumbotron">
+                    <h6><span class="error-404">404: Oh No! Aliens are attacking our servers</span>
+                    </h6>
+                    <p>Help us fend of the aliens so that we We can find the page you were looking for</p>
+                    <!--game-->
+                    <div class="row">
+                      <div class="invaders">
+                        <canvas id="game-canvas">Please send us a mail if you cannot find what you are looking for</canvas>
+                      </div>
+                    </div>
+                    <br><br>
+                    <p>If you think you that there should be a page here, check the site map below and if you can't find the page and drop us a note via the contact us form to let us know about a broken link. We'll get to it as soon as thos blasted aliens are dead</p>
+                    <ul>
+                     <li>
+                      <a href="{{ url_for('availability') }}">Availability</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('appointment') }}">Appointment</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('learn') }}">Learn</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('donate') }}">Donate</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('contact') }}">Contact</a>
+                  </li>
+				  <li>				  
+                      <a href="{{ url_for('checkout') }}">Checkout</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('error') }}">404</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('signup') }}">SignUp</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('signin') }}">SignIn</a>
+                  </li>
+                  <li>
+                      <a href="{{ url_for('signout') }}">SignOut</a>
+                  </li>
+				</ul>
+                </div>
+            </div>
+
+        </div>
+    <script src="..\static\js\invaders.js"></script>
+
+        <hr>
+        
+        {% endblock %}
+        

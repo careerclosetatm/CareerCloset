@@ -188,8 +188,8 @@ canvas {
         margin-bottom: 15px;
     }
 
-    header.carousel .carousel {
-        height: 70%;
+    header.carousel{
+        height: auto;
     }
 }
 /* Mascot & textbox's  responsive design */

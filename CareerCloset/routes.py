@@ -67,7 +67,8 @@ def signup():
             newuser = User(form.username.data,  form.fullname.data, form.email.data, form.uin.data, form.password.data)
             db.session.add(newuser)
             db.session.commit()   
-            session["email"] = newuser.email;
+            session["email"] = newuser.email
+            session["fullname"] = newuser.fullname
             print "signed up user"
             return redirect(url_for("home"))
    
@@ -84,6 +85,11 @@ def signin():
             return render_template('signin.html', form=form)
         else:
             session['email'] = form.email.data
+            user = User.query.filter_by(email = session["email"]).first()
+            if user is None:
+                return redirect(url_for("signin"))
+            else:
+                session['fullname'] = user.fullname
             return redirect(url_for('home'))
                  
     elif request.method == 'GET':
@@ -198,6 +204,11 @@ def appointment():
         return redirect(url_for("signin"))
     else:          
         return render_template("appointment.html")
+    
+@app.route("/404")
+def error():
+    return render_template("404.html")
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():

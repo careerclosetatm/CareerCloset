@@ -5,8 +5,6 @@ from flask_mail import Message, Mail
 from models import db, User, Suits, Schedule
 from sqlalchemy import or_, and_, engine, table
 import datetime
-import os
-from flask_wtf.csrf import CSRFProtect
 
 mail = Mail()
 
@@ -54,7 +52,7 @@ def checkout():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-    form = SignupForm()
+    form = SignupForm()   
     if request.method == 'POST':
         print "post requesting"
         if form.validate() == False:       
@@ -69,7 +67,8 @@ def signup():
             newuser = User(form.username.data,  form.fullname.data, form.email.data, form.uin.data, form.password.data)
             db.session.add(newuser)
             db.session.commit()   
-            session["email"] = newuser.email;
+            session["email"] = newuser.email
+            session["fullname"] = newuser.fullname
             print "signed up user"
             return redirect(url_for("home"))
    
@@ -79,19 +78,23 @@ def signup():
 
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
-    
     form = SigninForm()
-    print("Inside SignInForm")
+   
     if request.method == 'POST':
         if form.validate() == False:
             return render_template('signin.html', form=form)
         else:
             session['email'] = form.email.data
+            user = User.query.filter_by(email = session["email"]).first()
+            if user is None:
+                return redirect(url_for("signin"))
+            else:
+                session['fullname'] = user.fullname
             return redirect(url_for('home'))
                  
     elif request.method == 'GET':
         return render_template('signin.html', form=form)
-		
+
 @app.route('/signout')
 def signout():
  
@@ -201,13 +204,16 @@ def appointment():
         return redirect(url_for("signin"))
     else:          
         return render_template("appointment.html")
+    
+@app.route("/404")
+def error():
+    return render_template("404.html")
+
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
-    print("Entering ContactForm")
-    print(app.secret_key)
     form = ContactForm()
-    print("Inside ContactForm")
+    
     if request.method == "POST":
         print("contact post")
         if form.validate() == False:
@@ -228,28 +234,22 @@ def contact():
         print("contact get")
         return render_template("contact.html", form=form)
 
-        
-app.secret_key = "12345667"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.secret_key = "12345667"
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
-app.config["MAIL_PASSWORD"] = 'Group5Password'
-mail.init_app(app)
-app.config['SESSION_TYPE'] = 'filesystem'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
-from models import db
-db.init_app(app)
-with app.test_request_context():
-    #db.drop_all()
-    #User.__table__.drop(engine)
-    db.create_all()
-
-if __name__=="__main__":    
-
+if __name__=="__main__":
+    app.secret_key = "12345667"
+    app.config["MAIL_SERVER"] = "smtp.gmail.com"
+    app.config["MAIL_PORT"] = 465
+    app.config["MAIL_USE_SSL"] = True
+    app.config["MAIL_USERNAME"] = 'careerclosetatm@gmail.com'
+    app.config["MAIL_PASSWORD"] = 'Group5Password'
+    mail.init_app(app)
     
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
+    from models import db
+    db.init_app(app)    
+    with app.test_request_context():
+        #db.drop_all()
+        #User.__table__.drop(engine)
+        db.create_all()
 #         suit1=Suits("SID001","M","S","Jacket",True)
 #         suit2=Suits("SID002","M","S","Jacket",True)
 #         suit3=Suits("SID003","M","S","Jacket",True)
@@ -775,7 +775,9 @@ if __name__=="__main__":
     
             
             
-    port = int(os.environ.get('PORT',5000))
-    app.run(host='0.0.0.0',port=port,debug=True)
+    
+
+        
+    app.run(debug=True)
     
 

@@ -39,6 +39,7 @@ header.carousel .fill {
 
 .error-404 {
     font-size: 4em;
+    font-size: 5.5vh;
 }
 
 /* Donate Page Styles */
@@ -121,7 +122,8 @@ border-color:#500000;
 border-style: solid;
 color: #500000;
 text-align: center;
-font-size: 1.4em ;
+font-size: 1.4em;
+font-style: 2.5vh;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;

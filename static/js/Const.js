@@ -86,7 +86,7 @@ SI.Images.explosionImg.height = 40;
  */
 SI.Colors = {
 	rocket: '#07f',
-	ground: 'green',
+	ground: 'white',
 	text: 'white',
 }
 /*

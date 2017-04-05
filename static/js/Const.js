@@ -61,22 +61,22 @@ SI.Images = {};
 
 
 SI.Images.playerImg = new Image();
-SI.Images.playerImg.src = 'images/player.png';
+SI.Images.playerImg.src = '../static/img/player.png';
 SI.Images.playerImg.phases = 1 - 1;
 SI.Images.playerImg.width = 28;
 SI.Images.playerImg.height = 50;
 
 SI.Images.enemyImg = new Image();
-SI.Images.enemyImg.src = 'images/enemy.png';
+SI.Images.enemyImg.src = '../static/img/enemy.png';
 SI.Images.enemyImg.phases = 2 - 1;
 SI.Images.enemyImg.width = 40;
 SI.Images.enemyImg.height = 30;
 
 SI.Images.rocketImg = new Image();
-SI.Images.rocketImg.src = 'images/rocket.png';
+SI.Images.rocketImg.src = '../static/img/rocket.png';
 
 SI.Images.explosionImg = new Image();
-SI.Images.explosionImg.src = 'images/explosion.png';
+SI.Images.explosionImg.src = '../static/img/explosion.png';
 SI.Images.explosionImg.phases = 7 - 1;
 SI.Images.explosionImg.width = 40;
 SI.Images.explosionImg.height = 40;

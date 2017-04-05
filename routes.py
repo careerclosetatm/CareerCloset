@@ -216,21 +216,17 @@ def contact():
     form = ContactForm()
     
     if request.method == "POST":
-        print("contact post")
-        if form.validate() == False:
-            flash("All fields are required")
-            print("validate false")
-            return render_template("contact.html", form=form)
-        else:
-            print("Going to send message")
-            msg = Message(form.subject.data, sender="careerclosetatm@gmail.com", recipients = ["careerclosetatm@gmail.com"])
-            msg.body = """
-            From: %s <%s>
+         print("Going to send message")
+         msg = Message("Message from your visitor" + 'nae',
+                          sender='careerclosetatm@gmail.com',
+                          recipients=['careerclosetatm@gmail.com'])
+         msg.body = """
+            From: %s <%s>,
             %s
-            """%(form.name.data, form.email.data, form.message.data)
-            mail.send(msg)
-            print("message sent")
-            return render_template("contact.html", success = True)
+            """ % (form.name.data, form.email.data, form.message.data)
+         mail.send(msg)
+         print("message sent")
+         return render_template("contact.html", success = True)
     elif request.method == "GET":
         print("contact get")
         return render_template("contact.html", form=form)

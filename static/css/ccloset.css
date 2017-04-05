@@ -18,7 +18,8 @@ body {
 /* Home Page Carousel */
 
 header.carousel {
-    height: 50vh;
+    height:50%;
+    height:50vh;
 }
 
 header.carousel .item,

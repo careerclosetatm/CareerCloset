@@ -1,0 +1,232 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 75px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+/* 404 Page Styles */
+
+.error-404 {
+    font-size: 4em;
+}
+
+/* Donate Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+    position: absolute;
+
+    width:100%;
+    margin: 50px 0 0;
+    height: auto;
+    background-color: #500000;
+    color:#FFF;
+}
+footer a {
+  color: #FFF;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+  color: #777;
+}
+footer a:hover .fa {
+  color: #777;
+}
+/* Table Zebra striping */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+tr:nth-of-type(odd) {
+  background: #eee0e0;
+}
+th {
+  background: #500000;
+  color: white;
+  font-weight: bold;
+}
+td, th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+#mascot-right{
+  display: none;
+}
+ /*Mascot's Text Box*/
+.mascot-callout{
+  margin: 20px 5px 5px 5px;
+  float:right;
+}
+
+.bubble
+{
+position: relative;
+max-width: auto;
+height: auto;
+margin: 20px 5px 5px 5px;
+padding: 5px;
+background: #f5f5f5;
+border-color:#500000;
+border-style: solid;
+color: #500000;
+text-align: center;
+font-size: 1.4em ;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 10px 15px;
+border-color: #500000 transparent;
+display: block;
+width: 0;
+z-index: 1;
+margin-left: -11px;
+top: -15px;
+left: 97%;
+}
+/* space invaders game css */
+.invaders{
+  max-width: auto;
+  max-height: auto;
+
+}
+canvas {
+  display: block;
+  margin: auto;
+  position :relative;
+  max-width: 100%;
+  max-height: 100%;
+  background-color: #500000;
+  margin: 0;
+  padding:0;
+  line-height: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  image-rendering: optimizeSpeed;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimize-contrast
+}
+#gameview {
+  position: relative;
+  z-index:1;
+  margin: 0;
+  padding:0;
+  display: block;
+}
+
+/* Responsive Styles */
+
+@media(max-width:991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:767px) {
+    .img-portfolio {
+        margin-bottom: 15px;
+    }
+
+    header.carousel{
+        height: auto;
+    }
+}
+/* Mascot & textbox's  responsive design */
+@media(max-width:767px) {
+  #mascot-right{
+    display: block !important;
+    padding-right: 15px;
+    float: right;
+  }
+}
+
+@media(min-width:1400px) {
+  .bubble:after
+  {
+  left: 98%;
+  }
+}
+@media(max-width:767px) {
+  .bubble:after
+  {
+  left: 95%;
+  }
+}
+@media(max-width:480px) {
+  .bubble:after
+  {
+  left: 89%;
+  }
+}
+/*Login Modal Module - Will Test again for final prototype
+.prettyline {
+  height: 5px;
+  border-top: 0;
+  background: #c4e17f;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}*/

@@ -5,6 +5,7 @@ from flask_mail import Message, Mail
 from models import db, User, Suits, Schedule
 from sqlalchemy import or_, and_, engine, table
 import datetime
+import os
 
 mail = Mail()
 
@@ -233,6 +234,11 @@ def contact():
     elif request.method == "GET":
         print("contact get")
         return render_template("contact.html", form=form)
+        
+        
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
     
 app.secret_key = "12345667"
 app.config["MAIL_SERVER"] = "smtp.gmail.com"

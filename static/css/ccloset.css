@@ -39,6 +39,7 @@ header.carousel .fill {
 
 .error-404 {
     font-size: 4em;
+    font-size: 5.5vh;
 }
 
 /* Donate Page Styles */
@@ -121,7 +122,8 @@ border-color:#500000;
 border-style: solid;
 color: #500000;
 text-align: center;
-font-size: 1.4em ;
+font-size: 1.4em;
+font-size: 2.5vh;
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
@@ -139,7 +141,7 @@ width: 0;
 z-index: 1;
 margin-left: -11px;
 top: -15px;
-left: 97%;
+left: 99%;
 }
 /* space invaders game css */
 .invaders{
@@ -205,19 +207,19 @@ canvas {
 @media(min-width:1400px) {
   .bubble:after
   {
-  left: 98%;
+  left: 99%;
   }
 }
 @media(max-width:767px) {
   .bubble:after
   {
-  left: 95%;
+  left: 97%;
   }
 }
 @media(max-width:480px) {
   .bubble:after
   {
-  left: 89%;
+  left: 93%;
   }
 }
 /*Login Modal Module - Will Test again for final prototype

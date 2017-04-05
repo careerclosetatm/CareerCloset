@@ -61,14 +61,14 @@
                       <a href="{{ url_for('learn') }}">Learn</a>
                   </li>
                   <li>
-                      <a href="{{ url_for('donate') }}">Donate</a>
-                  <li>
-                      <a href="{{ url_for('contact') }}">Contact</a>
+                    {% if 'email' in session and session["email"]!="careerclosetatm@gmail.com" %}
+                    <a href="{{ url_for('donate') }}">Donate</a>
+                    {% endif %}
                   </li>
-				  <li>
-				  {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
-                      <a href="{{ url_for('checkout') }}">Checkout</a>
-                  {% endif %}
+  				        <li>
+  				          {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
+                    <a href="{{ url_for('checkout') }}">Checkout</a>
+                    {% endif %}
                   </li>
                   <li>
                       <a href="{{ url_for('error') }}">404</a>

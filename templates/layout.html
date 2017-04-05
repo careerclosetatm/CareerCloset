@@ -87,7 +87,8 @@
                 </li>
                 <li>
                     {% if 'email' in session %}
-                    <a href="{{ url_for('signout') }}"><i class="fa fa-user-o fa-2x"></i><b>&nbsp&nbspSignOut</b></a>
+                    <span>Welcome <em>{{ session["fullname"] }}</em></span>
+                    <a href="{{ url_for('signout') }}">&nbsp&nbspSignOut</a>
                     {% endif %}
                 <li>
                 </ul>

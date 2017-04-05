@@ -5,6 +5,11 @@
     <div class"mascot-callout">
        <p class="bubble"><em>"Top of the morning to you ol' chap, could I perhaps interest you in a cup of tea?"</em></p>
     </div>
+    <h3>
+    {% if "email" not in session %} Please sign in or sign up {% endif %}
+    </h3>
+    <h2>Welcome to Career closet {% if "email" in session %} {{ session["fullname"] }} {% endif %}
+    </h2>
     <!-- Header Carousel -->
     <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
@@ -64,7 +69,7 @@
                         <h4><i class="fa fa-fw fa-calendar"></i> Setup an Appointment</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Visit the "APPOINTMENT" page to  book an appointment online. Also, be sure to visit the "AVAILABILITY" page to ensure that the attire is indeed available at the time of scheduling. Visit the Texas A&M University Career Closet in person at MSC Room L428 at the time of your appointment. You will be able to create a date and time to try on and pick up your business attire.</p>
+                      <p>Visit the Appointment page to book an appointment online. Visit the Texas A&M University Career Closet in person at MSC Room L428 at the time of your appointment. You will be able to select a date and time to try on and pick up your business attire.</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +79,7 @@
                         <h4><i class="fa fa-fw fa-check"></i> Choose your Business Attire</h4>
                     </div>
                     <div class="panel-body">
-                        <p>During your appointment, you will be able to try on different pieces of business attire to find a size and style that suits you. You will have five days to use the business attire for important interviews, networking events, and other occasions where you want to make a strong first impression. Under certain circumstances, the rental period can be extended to accommodate students who may need to rent business attire for periods longer than five days.</p>
+                        <p>During your appointment, you will be able to try on different pieces of business attire to find a size and style that suits you. The standard rental period is 5 business days.  However, extensions may be provided on a case by case basis at our discretion.</p>
                     </div>
                 </div>
             </div>
@@ -84,7 +89,7 @@
                         <h4><i class="fa fa-fw fa-tint"></i> Dry Clean &amp Return</h4>
                     </div>
                     <div class="panel-body">
-                        <p>Before you return the business attire, you must take it by Park Cleaners (located at 314 George Bush Dr. College Station, Texas 77840) and pay the $5 fee to have the attire dry cleaned. All you will need to do after that is return the attire to the MSC Room L428 during normal business hours.</p>
+                      <p>Before you return the business attire, you must take it by Park Cleaners (located at 314 George Bush Dr. College Station, Texas 77840) and pay the $5 fee to have the attire dry cleaned. After that return the attire to the closet during normal business hours.</p>
                     </div>
                 </div>
             </div>

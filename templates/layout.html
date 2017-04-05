@@ -61,18 +61,17 @@
                       <a href="{{ url_for('learn') }}">Learn</a>
                   </li>
                   <li>
-                      <a href="{{ url_for('donate') }}">Donate</a>
+                    {% if 'email' in session and session["email"]!="careerclosetatm@gmail.com" %}
+                    <a href="{{ url_for('donate') }}">Donate</a>
+                    {% endif %}
+                  </li>
+  				        <li>
+  				          {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
+                    <a href="{{ url_for('checkout') }}">Checkout</a>
+                    {% endif %}
                   </li>
                   <li>
-                      <a href="{{ url_for('contact') }}">Contact</a>
-                  </li>
-				  <li>
-				  {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
-                      <a href="{{ url_for('checkout') }}">Checkout</a>
-                  {% endif %}
-                  </li>
-                  <li>
-                      <a href="404.html">404</a>
+                      <a href="{{ url_for('error') }}">404</a>
                   </li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -126,7 +125,7 @@
           </div>
           <div class="footer-col col-md-4">
               <h3>Location &amp Contact</h3>
-              <p><a href="contact.html" class="btn btn-default"><i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp&nbsp<b>Contact Us</b></a></p>
+              <p><a href="{{ url_for('contact') }}" class="btn btn-default"><i class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp&nbsp<b>Contact Us</b></a></p>
           </div>
         </div>
       </div>

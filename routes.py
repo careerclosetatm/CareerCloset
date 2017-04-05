@@ -217,8 +217,8 @@ def contact():
     
     if request.method == "POST":
          print("Going to send message")
-         msg = Message("Message from your visitor" + 'nae',
-                          sender='careerclosetatm@gmail.com',
+         msg = Message("Message from your visitor" + form.name.data,
+                          sender=form.email.data,
                           recipients=['careerclosetatm@gmail.com'])
          msg.body = """
             From: %s <%s>,

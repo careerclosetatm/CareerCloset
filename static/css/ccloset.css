@@ -222,6 +222,10 @@ canvas {
   left: 93%;
   }
 }
+#myCarousel, .bubble:after{
+  margin-left: -15px;
+  margin-right: -15px;
+}
 /*Login Modal Module - Will Test again for final prototype
 .prettyline {
   height: 5px;

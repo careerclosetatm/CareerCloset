@@ -4,13 +4,25 @@ from wtforms import TextField, TextAreaField, SubmitField, validators, Validatio
 from models import db, User
 
 class ContactForm(Form):
-    print("Inside ContactForm actual form")
     name = TextField("Name", [validators.Required("Please enter a name")])
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
     phone = TextField("Phone", [validators.Required("Please enter a phone number")])
     subject = TextField("Subject", [validators.Required("Please enter a subject")])
     message = TextAreaField("Message", [validators.Required("Please enter a message")])
     submit = SubmitField("Send")
+    def __init__(self, *args, **kwargs):
+        Form.__init__(self, *args, **kwargs)
+    
+    def validate(self):
+        if not Form.validate(self):            
+            return False
+ 
+        user = User.query.filter_by(email = self.email.data.lower()).first()
+        if user:
+            self.email.errors.append("That email is already taken")            
+            return False
+        else:
+            return True
     
 class CheckoutForm(Form):
     suiteId = TextField("Suit ID", [validators.Required("Please enter a name")])    

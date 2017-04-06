@@ -115,7 +115,7 @@ td, th {
 position: relative;
 max-width: auto;
 height: auto;
-margin: 20px 5px 5px 5px;
+margin: 20px -15px 5px -15px;
 padding: 5px;
 background: #f5f5f5;
 border-color:#500000;
@@ -141,7 +141,7 @@ width: 0;
 z-index: 1;
 margin-left: -11px;
 top: -15px;
-left: 99%;
+left: 97%;
 }
 /* space invaders game css */
 .invaders{
@@ -204,22 +204,22 @@ canvas {
   }
 }
 
-@media(min-width:1400px) {
+@media(min-width:1200px) {
   .bubble:after
   {
-  left: 99%;
+  left: 98%;
   }
 }
 @media(max-width:767px) {
   .bubble:after
   {
-  left: 97%;
+  left: 95%;
   }
 }
 @media(max-width:480px) {
   .bubble:after
   {
-  left: 93%;
+  left: 89%;
   }
 }
 #myCarousel, .bubble:after{

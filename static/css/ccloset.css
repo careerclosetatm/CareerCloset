@@ -115,7 +115,7 @@ td, th {
 position: relative;
 max-width: auto;
 height: auto;
-margin: 20px -15px 5px -15px;
+margin: 20px -5px 5px -5px;
 padding: 5px;
 background: #f5f5f5;
 border-color:#500000;
@@ -219,7 +219,7 @@ canvas {
 @media(max-width:480px) {
   .bubble:after
   {
-  left: 89%;
+  left: 90%;
   }
 }
 #myCarousel, .bubble:after{

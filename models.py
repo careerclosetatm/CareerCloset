@@ -79,62 +79,61 @@ class Schedule(db.Model):
     date_Value = db.Column(db.Date, primary_key = True)
     time9_00 = db.Column(db.Boolean)
     time9_30 = db.Column(db.Boolean)
-    time10_30 = db.Column(db.Boolean)
-    time11_30 = db.Column(db.Boolean)
-    time12_30 = db.Column(db.Boolean)
-    time13_30 = db.Column(db.Boolean)
-    time14_30 = db.Column(db.Boolean)
-    time15_30 = db.Column(db.Boolean)
-    time16_30 = db.Column(db.Boolean)
     time10_00 = db.Column(db.Boolean)
+    time10_30 = db.Column(db.Boolean)
     time11_00 = db.Column(db.Boolean)
+    time11_30 = db.Column(db.Boolean)
     time12_00 = db.Column(db.Boolean)
+    time12_30 = db.Column(db.Boolean)
     time13_00 = db.Column(db.Boolean)
+    time13_30 = db.Column(db.Boolean)
     time14_00 = db.Column(db.Boolean)
+    time14_30 = db.Column(db.Boolean)
     time15_00 = db.Column(db.Boolean)
+    time15_30 = db.Column(db.Boolean)
     time16_00 = db.Column(db.Boolean)
+    time16_30 = db.Column(db.Boolean)
     time17_00 = db.Column(db.Boolean)
     
     
     def __init__(self, date_Value, time9_00,time9_30,time10_00,time10_30,time11_00,time11_30,time12_00,time12_30,time13_00,time13_30,time14_00,time14_30,time15_00,time15_30,time16_00,time16_30,time17_00):
-        self.date_Value = date_Value
-        self.time9_00 = time9_00.title()
-        self.time9_30 = time9_30.title()
-        self.time10_30 = time10_30.title()
-        self.time11_30 = time11_30.title()
-        self.time12_30 = time12_30.title()
-        self.time13_30 = time13_30.title()
-        self.time14_30 = time14_30.title()
-        self.time15_30 = time15_30.title()
-        self.time16_30 = time16_30.title()
-        self.time10_00 = time10_00.title()
-        self.time11_00 = time11_00.title()
-        self.time12_00 = time12_00.title()
-        self.time13_00 = time13_00.title()
-        self.time14_00 = time14_00.title()
-        self.time15_00 = time15_00.title()
-        self.time16_00 = time16_00.title()
-        self.time17_00 = time17_00.title()
+        self.date_Value = datetime.strptime (date_Value,'%Y-%m-%d')
+        self.time9_00  = time9_00
+        self.time9_30  = time9_30
+        self.time10_00 = time10_00
+        self.time10_30 = time10_30
+        self.time11_00 = time11_00
+        self.time11_30 = time11_30
+        self.time12_00 = time12_00
+        self.time12_30 = time12_30
+        self.time13_00 = time13_00
+        self.time13_30 = time13_30
+        self.time14_00 = time14_00
+        self.time14_30 = time14_30
+        self.time15_00 = time15_00       
+        self.time15_30 = time15_30
+        self.time16_00 = time16_00
+        self.time16_30 = time16_30
+        self.time17_00 = time17_00
         
     def serialize(self):  
         return {           
-            #'date': self.date, 
+            'date_Value': self.date_Value, 
             'time9_00': self.time9_00,
-            'time10_00': self.time10_00,
-            'time11_00': self.time11_00,
-            'time12_00': self.time12_00,
-            'time13_00': self.time13_00,
-            'time14_00': self.time14_00,
-            'time15_00': self.time15_00,
-            'time16_00': self.time16_00,
-            'time17_00': self.time17_00,
             'time9_30': self.time9_30,
+            'time10_00': self.time10_00,
             'time10_30': self.time10_30,
+            'time11_00': self.time11_00,
             'time11_30': self.time11_30,
+            'time12_00': self.time12_00,
             'time12_30': self.time12_30,
+            'time13_00': self.time13_00,
             'time13_30': self.time13_30,
+            'time14_00': self.time14_00,
             'time14_30': self.time14_30,
+            'time15_00': self.time15_00,
             'time15_30': self.time15_30,
+            'time16_00': self.time16_00,
             'time16_30': self.time16_30,
-
+            'time17_00': self.time17_00,
         }

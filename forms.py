@@ -77,6 +77,7 @@ class AvailabilityForm(Form):
 
 class AppointmentForm():
     preference = TextField("Preference")
-    date = DateField("Date", [validators.Required("Please enter a date.")])
+    date_val = DateField("date_val", [validators.Required("Please enter a date.")])
+    time_val = DateField("time_val", [validators.Required("Please enter a time.")])
     submit = SubmitField("Schedule Appointment")
     

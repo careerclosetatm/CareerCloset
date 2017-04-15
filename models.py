@@ -60,50 +60,79 @@ class Order(db.Model):
         self.checkin_date = checkin_date.title()
         self.checkout_date = checkout_date.title()
         
+class Appointment(db.Model):
+    __tablename__ = "tbl_appointment"
+    appointment_id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer)
+    date_Value = db.Column(db.Date)
+    time = db.Column(db.String(100))
+   
+    def __init__(self, user_id, date_Value, time):
+        self.user_id = user_id
+        self.date_Value = datetime.strptime (date_Value,'%Y-%m-%d')
+        self.time = time.title()
+
+        
 class Schedule(db.Model):
     __tablename__ = "tbl_schedule"
-    date = db.Column(db.Date, primary_key = True)
+    date_Value = db.Column(db.Date, primary_key = True)
     time9_00 = db.Column(db.Boolean)
-    #time10_00 = db.Column(db.Boolean)
-#     time11_00 = db.Column(db.Boolean)
-#     time12_00 = db.Column(db.Boolean)
-#     time1_00 = db.Column(db.Boolean)
-#     time2_00 = db.Column(db.Boolean)
-#     time3_00 = db.Column(db.Boolean)
-#     time4_00 = db.Column(db.Boolean)
-#     time5_00 = db.Column(db.Boolean)
+    time9_30 = db.Column(db.Boolean)
     time10_00 = db.Column(db.Boolean)
+    time10_30 = db.Column(db.Boolean)
     time11_00 = db.Column(db.Boolean)
+    time11_30 = db.Column(db.Boolean)
     time12_00 = db.Column(db.Boolean)
-    time1_00 = db.Column(db.Boolean)
-    time2_00 = db.Column(db.Boolean)
-    time3_00 = db.Column(db.Boolean)
-    time4_00 = db.Column(db.Boolean)
-    time5_00 = db.Column(db.Boolean)
+    time12_30 = db.Column(db.Boolean)
+    time13_00 = db.Column(db.Boolean)
+    time13_30 = db.Column(db.Boolean)
+    time14_00 = db.Column(db.Boolean)
+    time14_30 = db.Column(db.Boolean)
+    time15_00 = db.Column(db.Boolean)
+    time15_30 = db.Column(db.Boolean)
+    time16_00 = db.Column(db.Boolean)
+    time16_30 = db.Column(db.Boolean)
+    time17_00 = db.Column(db.Boolean)
     
     
-    def __init__(self, date, time9_00, time10_00, time11_00, time12_00, time1_00, time2_00, time3_00, time4_00, time5_00):
-        self.date = date
-        self.time9_00 = time9_00.title()
-        self.time10_00 = time10_00.title()
-        self.time11_00 = time11_00.title()
-        self.time12_00 = time12_00.title()
-        self.time1_00 = time1_00.title()
-        self.time2_00 = time2_00.title()
-        self.time3_00 = time3_00.title()
-        self.time4_00 = time4_00.title()
-        self.time5_00 = time5_00.title()
+    def __init__(self, date_Value, time9_00,time9_30,time10_00,time10_30,time11_00,time11_30,time12_00,time12_30,time13_00,time13_30,time14_00,time14_30,time15_00,time15_30,time16_00,time16_30,time17_00):
+        self.date_Value = datetime.strptime (date_Value,'%Y-%m-%d')
+        self.time9_00  = time9_00
+        self.time9_30  = time9_30
+        self.time10_00 = time10_00
+        self.time10_30 = time10_30
+        self.time11_00 = time11_00
+        self.time11_30 = time11_30
+        self.time12_00 = time12_00
+        self.time12_30 = time12_30
+        self.time13_00 = time13_00
+        self.time13_30 = time13_30
+        self.time14_00 = time14_00
+        self.time14_30 = time14_30
+        self.time15_00 = time15_00       
+        self.time15_30 = time15_30
+        self.time16_00 = time16_00
+        self.time16_30 = time16_30
+        self.time17_00 = time17_00
         
     def serialize(self):  
         return {           
-            #'date': self.date, 
+            'date_Value': self.date_Value, 
             'time9_00': self.time9_00,
+            'time9_30': self.time9_30,
             'time10_00': self.time10_00,
+            'time10_30': self.time10_30,
             'time11_00': self.time11_00,
+            'time11_30': self.time11_30,
             'time12_00': self.time12_00,
-            'time1_00': self.time1_00,
-            'time2_00': self.time2_00,
-            'time3_00': self.time3_00,
-            'time4_00': self.time4_00,
-            'time5_00': self.time5_00
+            'time12_30': self.time12_30,
+            'time13_00': self.time13_00,
+            'time13_30': self.time13_30,
+            'time14_00': self.time14_00,
+            'time14_30': self.time14_30,
+            'time15_00': self.time15_00,
+            'time15_30': self.time15_30,
+            'time16_00': self.time16_00,
+            'time16_30': self.time16_30,
+            'time17_00': self.time17_00,
         }

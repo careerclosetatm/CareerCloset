@@ -1,22 +1,25 @@
 {% extends "layout.html" %} {% block content %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <div class="jumbo">Appointment Page</div>
 
 <script type=text/javascript>
 	$(function() {
 		$("#submitBtn").click(function() {
+			console.log("Hi th");
 			$.ajax({
 				type : "GET",
-				url : "/echo/",
+				url : "/schedule/",
 				contentType : "application/xml; charset=utf-8",
 				data : {
 					date : $('input[name="date"]').val()
 				},
 				success : function(data) {
-					//$('#slots').text(data.value);
-					alert(data["time9_00"])
+					$('#result').text(data.result);
+					alert("success");
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
-					alert(errorThrown);
+					alert("Arjun error:"+errorThrown);
 				}
 			});
 		});
@@ -25,7 +28,7 @@
 
 <strong>Enter a value to echo back:</strong>
 <input type='text' size='10' id='date' name='date'>
-<button type='button' id='submitBtn' name='submitBtn'>Submit via AJAX</button><br /><br />
+<button type='button' id='submitBtn' name='submitBtn' onclick="myFunction()">Submit via AJAX</button><br /><br />
 <strong><div id='slots'></div></strong>
 
 {% endblock %}

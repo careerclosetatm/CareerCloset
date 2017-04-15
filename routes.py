@@ -185,7 +185,7 @@ def schedule():
     print("Entered echo")
     #form = ScheduleForm()
     dateValue = request.args.get('date')
-    print("Querying")
+    #print("Querying")
     #slots = Schedule.query.filter(Schedule.date == date).first()
 
     slots = Schedule.query.filter(Schedule.date_Value == dateValue).first()

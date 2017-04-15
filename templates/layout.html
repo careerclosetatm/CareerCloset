@@ -7,14 +7,15 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <title>Career Closet</title>
-<link rel="icon" 
-      type="image/png" 
+<link rel="icon"
+      type="image/png"
       href="{{ url_for('static', filename='img/player.png') }}">
 <!-- Bootstrap Core CSS -->
 <link href=" {{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="{{ url_for('static', filename='css/ccloset.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
@@ -146,14 +147,14 @@
 	<!-- jQuery -->
     <script src="..\static\js\jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
+    <!-- Bootstrap Core JavaScript-->
     <script src="..\static\js\bootstrap.min.js"></script>
-
-    <!-- Script to Activate the Carousel -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
     </script>
+
+
 </body>
 </html>

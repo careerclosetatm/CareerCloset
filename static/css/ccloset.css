@@ -226,6 +226,71 @@ canvas {
   margin-left: -15px;
   margin-right: -15px;
 }
+
+/*label buttons*/
+.btn-label {
+  color: #500000;
+  background-color: #fff;
+  border-color: #1F0000;
+  margin-bottom: 5px;
+}
+.btn-label:focus,
+.btn-label.focus {
+  color: #fff;
+  background-color: #500000;
+  border-color: #1F0000;
+}
+.btn-label:hover {
+  color: #fff;
+  background-color: #500000;
+  border-color: #1F0000;
+}
+.btn-label:active,
+.btn-label.active,
+.open > .dropdown-toggle.btn-label {
+  color: #fff;
+  background-color: #500000;
+  border-color: #1F0000;
+}
+.btn-label:active:hover,
+.btn-label.active:hover,
+.open > .dropdown-toggle.btn-label:hover,
+.btn-label:active:focus,
+.btn-label.active:focus,
+.open > .dropdown-toggle.btn-label:focus,
+.btn-label:active.focus,
+.btn-label.active.focus,
+.open > .dropdown-toggle.btn-label.focus {
+  color: #fff;
+  background-color: #500000;
+  border-color: #1F0000;
+}
+.btn-label:active,
+.btn-label.active,
+.open > .dropdown-toggle.btn-label {
+  background-image: none;
+}
+.btn-label.disabled:hover,
+.btn-label[disabled]:hover,
+fieldset[disabled] .btn-label:hover,
+.btn-label.disabled:focus,
+.btn-label[disabled]:focus,
+fieldset[disabled] .btn-label:focus,
+.btn-label.disabled.focus,
+.btn-label[disabled].focus,
+fieldset[disabled] .btn-label.focus {
+  color:#500000
+  background-color: #fff;
+  border-color: #1F0000;
+}
+.btn-label .badge {
+  color: #500000;
+  background-color: #1f0000;
+}
+.apppad{
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 /*Login Modal Module - Will Test again for final prototype
 .prettyline {
   height: 5px;

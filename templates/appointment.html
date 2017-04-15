@@ -1,5 +1,5 @@
 {% extends "layout.html" %} {% block content %}
-<!--<div class="jumbo">Appointment Page</div>
+<div class="jumbo">Appointment Page</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
@@ -17,8 +17,27 @@
 					date : $('input[name="date"]').val()
 				},
 				success : function(data) {
-					$('#result').text(data.result);
-					alert("success");
+					$('#result').text(data.time9_00);
+					alert("success");					
+					alert(data.result.time9_00);
+					if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
+					if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
+					if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
+					if(!data.result.time10_30) document.getElementById("time10_30").style.display = "none";
+					if(!data.result.time11_00) document.getElementById("time11_00").style.display = "none";
+					if(!data.result.time11_30) document.getElementById("time11_30").style.display = "none";
+					if(!data.result.time12_00) document.getElementById("time12_00").style.display = "none";
+					if(!data.result.time12_30) document.getElementById("time12_30").style.display = "none";
+					if(!data.result.time13_00) document.getElementById("time13_00").style.display = "none";
+					if(!data.result.time13_30) document.getElementById("time13_30").style.display = "none";
+					if(!data.result.time14_00) document.getElementById("time14_00").style.display = "none";
+					if(!data.result.time14_30) document.getElementById("time14_30").style.display = "none";
+					if(!data.result.time15_00) document.getElementById("time15_00").style.display = "none";
+					if(!data.result.time15_30) document.getElementById("time15_30").style.display = "none";
+					if(!data.result.time16_00) document.getElementById("time16_00").style.display = "none";
+					if(!data.result.time16_30) document.getElementById("time16_30").style.display = "none";
+					if(!data.result.time17_00) document.getElementById("time17_00").style.display = "none";
+					
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
 					alert("Arjun error:"+errorThrown);
@@ -32,9 +51,10 @@
 <input type='text' size='10' id='date' name='date'>
 <button type='button' id='submitBtn' name='submitBtn' onclick="myFunction()">Submit via AJAX</button><br /><br />
 <strong><div id='slots'></div></strong>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 	<!-- Page Content -->
+	
 	<div class="container">
 
 			<!-- Page Heading/Breadcrumbs -->
@@ -72,16 +92,26 @@
 										</div>
 										<div class="col-md-6 apppad" data-toggle="buttons">
 											<span><strong>Morning</strong></span><br/>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:00 AM</strong></label>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:10 AM</strong></label>
+											<label id= "time9_00" class="btn btn-label"><input type="radio" name="optradio"><strong>9:00 AM</strong></label>
+											<label id= "time9_30" class="btn btn-label"><input type="radio" name="optradio"><strong>9:30 AM</strong></label>
+											<label id= "time10_00" class="btn btn-label"><input type="radio" name="optradio"><strong>10:00 AM</strong></label>
+											<label id= "time10_30" class="btn btn-label"><input type="radio" name="optradio"><strong>10:30 AM</strong></label>
+											<label id= "time11_00" class="btn btn-label"><input type="radio" name="optradio"><strong>11:00 AM</strong></label>
+											<label id= "time11_30" class="btn btn-label"><input type="radio" name="optradio"><strong>11:30 AM</strong></label>
 											<br/><span><strong>Afternoon</strong></span><br/>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:00 AM</strong></label>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:10 AM</strong></label>
+											<label id= "time12_00" class="btn btn-label"><input type="radio" name="optradio"><strong>12:00 PM</strong></label>
+											<label id= "time12_30" class="btn btn-label"><input type="radio" name="optradio"><strong>12:30 PM</strong></label>
+											<label id= "time13_00" class="btn btn-label"><input type="radio" name="optradio"><strong>1:00 PM</strong></label>
+											<label id= "time13_30" class="btn btn-label"><input type="radio" name="optradio"><strong>1:30 PM</strong></label>
+											<label id= "time14_00" class="btn btn-label"><input type="radio" name="optradio"><strong>2:00 PM</strong></label>
+											<label id= "time14_30" class="btn btn-label"><input type="radio" name="optradio"><strong>2:30 PM</strong></label>
 											<br/><span><strong>Evening</strong></span><br/>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:25 AM</strong></label>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:00 AM</strong></label>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:10 AM</strong></label>
-											<label class="btn btn-label"><input type="radio" name="optradio"><strong>09:25 AM</strong></label>
+											<label id= "time15_00" class="btn btn-label"><input type="radio" name="optradio"><strong>3:00 PM</strong></label>
+											<label id= "time15_30" class="btn btn-label"><input type="radio" name="optradio"><strong>3:30 PM</strong></label>
+											<label id= "time16_00" class="btn btn-label"><input type="radio" name="optradio"><strong>4:00 PM</strong></label>
+											<label id= "time16_30" class="btn btn-label"><input type="radio" name="optradio"><strong>4:30 PM</strong></label>
+											<label id= "time17_00" class="btn btn-label"><input type="radio" name="optradio"><strong>5:00 PM</strong></label>											
+											
 										</div>
 									</div>
 									<div class="row">
@@ -117,6 +147,8 @@
 
 	<hr>
 		</div>
+		
+	
 	<!--/.container -->
 
 {% endblock %}

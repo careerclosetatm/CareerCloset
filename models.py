@@ -64,13 +64,13 @@ class Appointment(db.Model):
     __tablename__ = "tbl_appointment"
     appointment_id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer)
-    date = db.Column(db.Date)
+    date_Value = db.Column(db.Date)
     time = db.Column(db.String(100))
    
-    def __init__(self, appointment_id, user_id, date, time):
+    def __init__(self, appointment_id, user_id, date_Value, time):
         self.appointment_id = appointment_id.title()
         self.user_id = user_id.title()
-        self.date = date.title()        
+        self.date_Value = date_Value.title()        
         self.time = time.title()
 
         

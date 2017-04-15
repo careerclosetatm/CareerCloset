@@ -67,10 +67,9 @@ class Appointment(db.Model):
     date_Value = db.Column(db.Date)
     time = db.Column(db.String(100))
    
-    def __init__(self, appointment_id, user_id, date_Value, time):
-        self.appointment_id = appointment_id.title()
-        self.user_id = user_id.title()
-        self.date_Value = date_Value.title()        
+    def __init__(self, user_id, date_Value, time):
+        self.user_id = user_id
+        self.date_Value = datetime.strptime (date_Value,'%Y-%m-%d')
         self.time = time.title()
 
         

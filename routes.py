@@ -205,7 +205,7 @@ def schedule():
 def learn():
     return render_template("learn.html")
 
-@app.route("/appointment")
+@app.route("/appointment", methods=['GET', 'POST'])
 def appointment():
     if "email" not in session:
         return redirect(url_for("signin"))
@@ -217,15 +217,21 @@ def appointment():
         if request.method == 'POST':
             form = AppointmentForm()
             #http://stackoverflow.com/questions/6699360/flask-sqlalchemy-update-a-rows-information/7831094
-            db.session.add(Appointment(user_id=user.user_id,date_Value=form.date_val.data,time=form.time_val.data))
-            schedule_Value = Schedule.query.filter(Schedule.date_Value == form.date_val.data).first()
-            setattr(schedule_Value, form.time_val.data, False)
+            print("optradio value : "+request.form["optradio"])
+            print("datepicker12 value : "+request.form["date_val"])
+            time_val = request.form["optradio"]
+            d_val = request.form["date_val"]
+            date_val = datetime.strptime(d_val, "%m/%d/%Y")
+            date_val = datetime.strftime(date_val, "%Y-%m-%d")
+            db.session.add(Appointment(user_id=user.user_id,date_Value=date_val,time=time_val))
+            schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
+            setattr(schedule_Value, time_val, False)
             #db.session.query(Schedule).filter(Schedule.date_Value=date_val).update({form.time_val.data: False})
             db.session.commit()        
             print("Going to send message")
             msg = Message("Confirmation of your appointment with the Career Closet",
-                              sender=['careerclosetatm@gmail.com'],
-                              recipients=session["email"])
+                              sender='careerclosetatm@gmail.com',
+                              recipients=[session["email"]])
             msg.body = """
                 From: Team Career Closet <%s>,
                 Howdy %s, 
@@ -233,7 +239,7 @@ def appointment():
                 Please turn up with your Tamu student ID card on the above mentioned date and time.
                 Gigem.
                 Team Career Closet.
-                """ % ('careerclosetatm@gmail.com',user.fullname,form.date_val.data,form.time_val.data)
+                """ % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
             mail.send(msg)
             print("message sent")
         return render_template("appointment.html")
@@ -281,10 +287,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
 from models import db
 db.init_app(app)    
 with app.test_request_context():
-    db.drop_all()
+    #db.drop_all()
     #User.__table__.drop(engine)
     #Creating schedule DB
     db.create_all()
+    '''
     schedule1=Schedule("2017-04-06",False,True,True,True,False,True,True,True,True,True,True,True,False,True,True,True,True)
     schedule2=Schedule("2017-04-07",True,True,False,True,True,True,False,False,True,True,True,True,True,True,True,True,True)
     schedule3=Schedule("2017-04-10",True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True)
@@ -1890,7 +1897,7 @@ with app.test_request_context():
     db.session.add(schedule801)
     db.session.add(schedule802)
     db.session.commit()   
-
+    '''
 
 if __name__=="__main__":
     port = int(os.environ.get('PORT',5000))

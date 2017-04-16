@@ -185,12 +185,15 @@ def schedule():
     print("Entered echo")
     #form = ScheduleForm()
     dateValue = request.args.get('date')
+    
     print(dateValue)
+    print("date stripped")
+    print( datetime.strptime(dateValue,'%m/%d/%Y'))
     
     #print("Querying")
     #slots = Schedule.query.filter(Schedule.date == date).first()
 
-    slots = Schedule.query.filter(Schedule.date_Value == dateValue).first()
+    slots = Schedule.query.filter(Schedule.date_Value == datetime.strftime(datetime.strptime(dateValue,'%m/%d/%Y'),'%Y-%m-%d')).first()
     slotValue = Schedule.query.filter().all()
 
     print("Finished Querying")

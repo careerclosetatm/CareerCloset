@@ -15,9 +15,7 @@
 					date : $('input[name="date"]').val()
 				},
 				success : function(data) {
-					$('#result').text(data.time9_00);
-					alert("success");					
-					alert(data.result.time9_00);
+					$('#result').text(data.time9_00);					
 					if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
 					if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
 					if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
@@ -38,7 +36,7 @@
 					
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
-					alert("Arjun error:"+errorThrown);
+					alert("error:"+errorThrown);
 				}
 			});
 		});
@@ -148,9 +146,6 @@
 				},
 				success : function(data) {
 					$('#result').text(data.time9_00);
-					alert("success");		
-					alert($('#datetimepicker12').find(".active").data("day"));
-					alert(data.result.time9_00);
 					if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
 					if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
 					if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
@@ -171,7 +166,7 @@
 					
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
-					alert("Arjun error:"+errorThrown);
+					alert("error:"+errorThrown);
 				}
 			});
     

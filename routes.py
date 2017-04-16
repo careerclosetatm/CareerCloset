@@ -38,8 +38,7 @@ def checkout():
                 flash("All fields are required")
                 return render_template("checkout.html", form=form)
             else:
-                suits = Suits.query.filter(Suits.suit_id == form.suiteId.data.upper()).first()
-                print suits
+                suits = Suits.query.filter(Suits.suit_id == form.suiteId.data.upper()).first()                
                 if suits != None:
                     suits.available = False
                     db.session.commit()   
@@ -54,23 +53,19 @@ def checkout():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()   
-    if request.method == 'POST':
-        print "post requesting"
-        if form.validate() == False:       
-            print "validation failed"
+    if request.method == 'POST':        
+        if form.validate() == False:                   
             for field in form: 
                 for error in field.errors:
                     print(error)     
                     
             return render_template('signup.html', form=form)
-        else:
-            print("Creating user")   
+        else:            
             newuser = User(form.username.data,  form.fullname.data, form.email.data, form.uin.data, form.password.data)
             db.session.add(newuser)
             db.session.commit()   
             session["email"] = newuser.email
-            session["fullname"] = newuser.fullname
-            print "signed up user"
+            session["fullname"] = newuser.fullname            
             return redirect(url_for("home"))
    
     elif request.method == 'GET':
@@ -183,23 +178,10 @@ def availability():
 @app.route('/schedule/', methods=['GET'])
 def schedule():
     print("Entered echo")
-    #form = ScheduleForm()
     dateValue = request.args.get('date')
-    
-    print(dateValue)
-    print("date stripped")
-    print( datetime.strptime(dateValue,'%m/%d/%Y'))
-    
-    #print("Querying")
-    #slots = Schedule.query.filter(Schedule.date == date).first()
-
     slots = Schedule.query.filter(Schedule.date_Value == datetime.strftime(datetime.strptime(dateValue,'%m/%d/%Y'),'%Y-%m-%d')).first()
     slotValue = Schedule.query.filter().all()
-
-    print("Finished Querying")
-    print(slots.time9_00)
     return jsonify(result = {"date_Value":slots.date_Value, "time9_00":slots.time9_00, "time9_30":slots.time9_30, "time10_00":slots.time10_00, "time10_30":slots.time10_30, "time11_00":slots.time11_00, "time11_30":slots.time11_30, "time12_00":slots.time12_00, "time12_30":slots.time12_30, "time13_00":slots.time13_00, "time13_30":slots.time13_30, "time14_00":slots.time14_00, "time14_30":slots.time14_30, "time15_00":slots.time15_00, "time15_30":slots.time15_30, "time16_00":slots.time16_00, "time16_30":slots.time16_30,"time17_00":slots.time17_00})    
-
     
 @app.route("/learn")
 def learn():
@@ -216,9 +198,6 @@ def appointment():
     else:
         if request.method == 'POST':
             form = AppointmentForm()
-            #http://stackoverflow.com/questions/6699360/flask-sqlalchemy-update-a-rows-information/7831094
-            print("optradio value : "+request.form["optradio"])
-            print("datepicker12 value : "+request.form["date_val"])
             time_val = request.form["optradio"]
             d_val = request.form["date_val"]
             date_val = datetime.strptime(d_val, "%m/%d/%Y")
@@ -226,9 +205,7 @@ def appointment():
             db.session.add(Appointment(user_id=user.user_id,date_Value=date_val,time=time_val))
             schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
             setattr(schedule_Value, time_val, False)
-            #db.session.query(Schedule).filter(Schedule.date_Value=date_val).update({form.time_val.data: False})
             db.session.commit()        
-            print("Going to send message")
             msg = Message("Confirmation of your appointment with the Career Closet",
                               sender='careerclosetatm@gmail.com',
                               recipients=[session["email"]])
@@ -241,7 +218,6 @@ def appointment():
                 Team Career Closet.
                 """ % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
             mail.send(msg)
-            print("message sent")
         return render_template("appointment.html")
             
     
@@ -255,7 +231,6 @@ def contact():
     form = ContactForm()
     
     if request.method == "POST":
-         print("Going to send message")
          msg = Message("Message from your visitor" + form.name.data,
                           sender=form.email.data,
                           recipients=['careerclosetatm@gmail.com'])
@@ -264,10 +239,8 @@ def contact():
             %s
             """ % (form.name.data, form.email.data, form.message.data)
          mail.send(msg)
-         print("message sent")
          return render_template("contact.html", success = True)
     elif request.method == "GET":
-        print("contact get")
         return render_template("contact.html", form=form)
         
         
@@ -288,7 +261,6 @@ from models import db
 db.init_app(app)    
 with app.test_request_context():
     #db.drop_all()
-    #User.__table__.drop(engine)
     #Creating schedule DB
     db.create_all()
     '''

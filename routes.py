@@ -255,10 +255,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///development'
 from models import db
 db.init_app(app)    
 with app.test_request_context():
-    db.drop_all()
+    #db.drop_all()
     #Creating schedule DB
     db.create_all()
-    
+    '''
     schedule1=Schedule("2017-04-06",False,True,True,True,False,True,True,True,True,True,True,True,False,True,True,True,True)
     schedule2=Schedule("2017-04-07",True,True,False,True,True,True,False,False,True,True,True,True,True,True,True,True,True)
     schedule3=Schedule("2017-04-10",True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True)
@@ -2312,7 +2312,7 @@ with app.test_request_context():
     db.session.add(suit112)
 
     db.session.commit()   
-    
+    '''
 
 if __name__=="__main__":
     port = int(os.environ.get('PORT',5000))

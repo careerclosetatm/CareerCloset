@@ -25,7 +25,7 @@ class ContactForm(Form):
             return True
     
 class CheckoutForm(Form):
-    suiteId = TextField("Suit ID", [validators.Required("Please enter a name")])    
+    suiteId = TextField("suidId", [validators.Required("Please enter a suit ID")])    
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
     submit = SubmitField("Checkout")
 

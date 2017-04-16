@@ -23,8 +23,8 @@ def home():
 def donate():
     return render_template("donate.html")
 
-@app.route("/checkout", methods=["GET", "POST"])
-def checkout():
+@app.route("/dashboard", methods=["GET", "POST"])
+def dashboard():
     if "email" not in session:
         return redirect(url_for("signin"))
     user = User.query.filter_by(email = session["email"]).first()
@@ -36,16 +36,17 @@ def checkout():
         if request.method == "POST":
             if form.validate() == False:
                 flash("All fields are required")
-                return render_template("checkout.html", form=form)
+                return render_template("dashboard.html", form=form)
             else:
                 suits = Suits.query.filter(Suits.suit_id == form.suiteId.data.upper()).first()                
                 if suits != None:
                     suits.available = False
                     db.session.commit()   
 
-                return render_template("checkout.html", success = True)
+                return render_template("dashboard.html", success = True, form=form)
         elif request.method == "GET":
-            return render_template("checkout.html", form=form)  
+            suits = Suits.query.filter().all()                                
+            return render_template("dashboard.html", form=form, suits=suits)  
     else:
         return render_template("home.html")
     
@@ -199,8 +200,14 @@ def appointment():
             date_val = datetime.strftime(date_val, "%Y-%m-%d")
             db.session.add(Appointment(user_id=user.user_id,date_Value=date_val,time=time_val))
             schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
+            print(schedule_Value.date_Value)
+            print(schedule_Value.time12_00)
+            print(time_val)
             setattr(schedule_Value, time_val, False)
             db.session.commit()        
+            schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
+            print(schedule_Value.time12_00)
+            
             msg = Message("Confirmation of your appointment with the Career Closet",
                               sender='careerclosetatm@gmail.com',
                               recipients=[session["email"]])
@@ -213,6 +220,7 @@ def appointment():
                 Team Career Closet.
                 """ % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
             mail.send(msg)
+            return render_template("appointment.html", success=True)
         return render_template("appointment.html")
             
     

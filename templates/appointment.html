@@ -17,22 +17,39 @@
 				success : function(data) {
 					$('#result').text(data.time9_00);					
 					if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
+					else document.getElementById("time9_00").style.display = "inline";
 					if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
+					else document.getElementById("time9_30").style.display = "inline";
 					if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
+					else document.getElementById("time10_00").style.display = "initial";
 					if(!data.result.time10_30) document.getElementById("time10_30").style.display = "none";
+					else document.getElementById("time10_30").style.display = "initial";
 					if(!data.result.time11_00) document.getElementById("time11_00").style.display = "none";
+					else document.getElementById("time11_00").style.display = "initial";
 					if(!data.result.time11_30) document.getElementById("time11_30").style.display = "none";
+					else document.getElementById("time11_30").style.display = "initial";
 					if(!data.result.time12_00) document.getElementById("time12_00").style.display = "none";
+					else document.getElementById("time12_00").style.display = "initial";
 					if(!data.result.time12_30) document.getElementById("time12_30").style.display = "none";
+					else document.getElementById("time12_30").style.display = "initial";
 					if(!data.result.time13_00) document.getElementById("time13_00").style.display = "none";
+					else document.getElementById("time13_00").style.display = "initial";
 					if(!data.result.time13_30) document.getElementById("time13_30").style.display = "none";
+					else document.getElementById("time13_30").style.display = "initial";
 					if(!data.result.time14_00) document.getElementById("time14_00").style.display = "none";
+					else document.getElementById("time14_00").style.display = "initial";
 					if(!data.result.time14_30) document.getElementById("time14_30").style.display = "none";
+					else document.getElementById("time14_30").style.display = "initial";
 					if(!data.result.time15_00) document.getElementById("time15_00").style.display = "none";
+					else document.getElementById("time15_00").style.display = "initial";
 					if(!data.result.time15_30) document.getElementById("time15_30").style.display = "none";
+					else document.getElementById("time15_30").style.display = "initial";
 					if(!data.result.time16_00) document.getElementById("time16_00").style.display = "none";
+					else document.getElementById("time16_00").style.display = "initial";
 					if(!data.result.time16_30) document.getElementById("time16_30").style.display = "none";
+					else document.getElementById("time16_30").style.display = "initial";
 					if(!data.result.time17_00) document.getElementById("time17_00").style.display = "none";
+					else document.getElementById("time17_00").style.display = "initial";
 					
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -62,6 +79,12 @@
 					</div>
 			</div>
 			<!-- /.row -->
+			{% if success %}
+	<div class"mascot-callout">
+		<p>Congratulations! We have your appointment booked. Please check your email for details.</p>
+	</div>
+{% endif %}
+			
 			<!-- Image Header -->
 			<div class="row">
 					<div class="col-lg-12">
@@ -84,21 +107,21 @@
 											<div id="datetimepicker12" name="datetimepicker12"></div>
 										</div>
 										<div class="col-md-6 apppad" data-toggle="buttons">
-											<span><strong>Morning</strong></span><br/>
+											<span><strong>Morning</strong></span><br/><br/>
 											<label id= "time9_00" class="btn btn-label"><input type="radio" name="optradio" value="time09_00"><strong>9:00 AM</strong></label>
 											<label id= "time9_30" class="btn btn-label"><input type="radio" name="optradio" value="time09_30"><strong>9:30 AM</strong></label>
 											<label id= "time10_00" class="btn btn-label"><input type="radio" name="optradio"value="time10_00"><strong>10:00 AM</strong></label>
 											<label id= "time10_30" class="btn btn-label"><input type="radio" name="optradio"value="time10_30"><strong>10:30 AM</strong></label>
 											<label id= "time11_00" class="btn btn-label"><input type="radio" name="optradio" value="time11_00"><strong>11:00 AM</strong></label>
 											<label id= "time11_30" class="btn btn-label"><input type="radio" name="optradio" value="time11_30"><strong>11:30 AM</strong></label>
-											<br/><span><strong>Afternoon</strong></span><br/>
+											<br/><br/><span><strong>Afternoon</strong></span><br/><br/>
 											<label id= "time12_00" class="btn btn-label"><input type="radio" name="optradio" value="time12_00"><strong>12:00 PM</strong></label>
 											<label id= "time12_30" class="btn btn-label"><input type="radio" name="optradio" value="time12_30"><strong>12:30 PM</strong></label>
 											<label id= "time13_00" class="btn btn-label"><input type="radio" name="optradio" value="time13_00"><strong>1:00 PM</strong></label>
 											<label id= "time13_30" class="btn btn-label"><input type="radio" name="optradio" value="time13_30"><strong>1:30 PM</strong></label>
 											<label id= "time14_00" class="btn btn-label"><input type="radio" name="optradio" value="time14_00"><strong>2:00 PM</strong></label>
 											<label id= "time14_30" class="btn btn-label"><input type="radio" name="optradio" value="time14_30"><strong>2:30 PM</strong></label>
-											<br/><span><strong>Evening</strong></span><br/>
+											<br/><br/><span><strong>Evening</strong></span><br/><br/>
 											<label id= "time15_00" class="btn btn-label"><input type="radio" name="optradio" value="time15_00"><strong>3:00 PM</strong></label>
 											<label id= "time15_30" class="btn btn-label"><input type="radio" name="optradio" value="time15_30"><strong>3:30 PM</strong></label>
 											<label id= "time16_00" class="btn btn-label"><input type="radio" name="optradio" value="time16_00"><strong>4:00 PM</strong></label>
@@ -147,22 +170,39 @@
 				success : function(data) {
 					$('#result').text(data.time9_00);
 					if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
+					else document.getElementById("time9_00").style.display = "inline";
 					if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
+					else document.getElementById("time9_30").style.display = "inline";
 					if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
+					else document.getElementById("time10_00").style.display = "initial";
 					if(!data.result.time10_30) document.getElementById("time10_30").style.display = "none";
+					else document.getElementById("time10_30").style.display = "initial";
 					if(!data.result.time11_00) document.getElementById("time11_00").style.display = "none";
+					else document.getElementById("time11_00").style.display = "initial";
 					if(!data.result.time11_30) document.getElementById("time11_30").style.display = "none";
+					else document.getElementById("time11_30").style.display = "initial";
 					if(!data.result.time12_00) document.getElementById("time12_00").style.display = "none";
+					else document.getElementById("time12_00").style.display = "initial";
 					if(!data.result.time12_30) document.getElementById("time12_30").style.display = "none";
+					else document.getElementById("time12_30").style.display = "initial";
 					if(!data.result.time13_00) document.getElementById("time13_00").style.display = "none";
+					else document.getElementById("time13_00").style.display = "initial";
 					if(!data.result.time13_30) document.getElementById("time13_30").style.display = "none";
+					else document.getElementById("time13_30").style.display = "initial";
 					if(!data.result.time14_00) document.getElementById("time14_00").style.display = "none";
+					else document.getElementById("time14_00").style.display = "initial";
 					if(!data.result.time14_30) document.getElementById("time14_30").style.display = "none";
+					else document.getElementById("time14_30").style.display = "initial";
 					if(!data.result.time15_00) document.getElementById("time15_00").style.display = "none";
+					else document.getElementById("time15_00").style.display = "initial";
 					if(!data.result.time15_30) document.getElementById("time15_30").style.display = "none";
+					else document.getElementById("time15_30").style.display = "initial";
 					if(!data.result.time16_00) document.getElementById("time16_00").style.display = "none";
+					else document.getElementById("time16_00").style.display = "initial";
 					if(!data.result.time16_30) document.getElementById("time16_30").style.display = "none";
+					else document.getElementById("time16_30").style.display = "initial";
 					if(!data.result.time17_00) document.getElementById("time17_00").style.display = "none";
+					else document.getElementById("time17_00").style.display = "initial";
 					
 				},
 				error : function(jqXHR, textStatus, errorThrown) {
@@ -174,7 +214,59 @@
 });
 			function myFunction() {			    			   
 			    document.getElementById("date_val").value = $('#datetimepicker12').find(".active").data("day");			    
-			}		
+			}
+			
+			$(document).ready(function(){
+				$.ajax({
+					type : "GET",
+					url : "/schedule/",
+					contentType : "application/xml; charset=utf-8",
+					data : {
+						date : $('#datetimepicker12').find(".active").data("day")
+					},
+					success : function(data) {
+						$('#result').text(data.time9_00);
+						if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
+						else document.getElementById("time9_00").style.display = "inline";
+						if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
+						else document.getElementById("time9_30").style.display = "inline";
+						if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
+						else document.getElementById("time10_00").style.display = "initial";
+						if(!data.result.time10_30) document.getElementById("time10_30").style.display = "none";
+						else document.getElementById("time10_30").style.display = "initial";
+						if(!data.result.time11_00) document.getElementById("time11_00").style.display = "none";
+						else document.getElementById("time11_00").style.display = "initial";
+						if(!data.result.time11_30) document.getElementById("time11_30").style.display = "none";
+						else document.getElementById("time11_30").style.display = "initial";
+						if(!data.result.time12_00) document.getElementById("time12_00").style.display = "none";
+						else document.getElementById("time12_00").style.display = "initial";
+						if(!data.result.time12_30) document.getElementById("time12_30").style.display = "none";
+						else document.getElementById("time12_30").style.display = "initial";
+						if(!data.result.time13_00) document.getElementById("time13_00").style.display = "none";
+						else document.getElementById("time13_00").style.display = "initial";
+						if(!data.result.time13_30) document.getElementById("time13_30").style.display = "none";
+						else document.getElementById("time13_30").style.display = "initial";
+						if(!data.result.time14_00) document.getElementById("time14_00").style.display = "none";
+						else document.getElementById("time14_00").style.display = "initial";
+						if(!data.result.time14_30) document.getElementById("time14_30").style.display = "none";
+						else document.getElementById("time14_30").style.display = "initial";
+						if(!data.result.time15_00) document.getElementById("time15_00").style.display = "none";
+						else document.getElementById("time15_00").style.display = "initial";
+						if(!data.result.time15_30) document.getElementById("time15_30").style.display = "none";
+						else document.getElementById("time15_30").style.display = "initial";
+						if(!data.result.time16_00) document.getElementById("time16_00").style.display = "none";
+						else document.getElementById("time16_00").style.display = "initial";
+						if(!data.result.time16_30) document.getElementById("time16_30").style.display = "none";
+						else document.getElementById("time16_30").style.display = "initial";
+						if(!data.result.time17_00) document.getElementById("time17_00").style.display = "none";
+						else document.getElementById("time17_00").style.display = "initial";
+						
+					},
+					error : function(jqXHR, textStatus, errorThrown) {
+						alert("error:"+errorThrown);
+					}
+				});
+				});
 	</script>
 
 

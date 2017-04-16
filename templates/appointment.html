@@ -143,6 +143,46 @@
 				format: 'L',
 				daysOfWeekDisabled: [0,2,3,5,6]
 			});
+			
+			$("#datetimepicker12").on("dp.change", function(e) {
+    			$.ajax({
+				type : "GET",
+				url : "/schedule/",
+				contentType : "application/xml; charset=utf-8",
+				data : {
+					date : $('#datetimepicker12').find(".active").data("day")
+				},
+				success : function(data) {
+					$('#result').text(data.time9_00);
+					alert("success");					
+					alert(data.result.time9_00);
+					if(!data.result.time9_00) document.getElementById("time9_00").style.display = "none";
+					if(!data.result.time9_30) document.getElementById("time9_30").style.display = "none";
+					if(!data.result.time10_00) document.getElementById("time10_00").style.display = "none";
+					if(!data.result.time10_30) document.getElementById("time10_30").style.display = "none";
+					if(!data.result.time11_00) document.getElementById("time11_00").style.display = "none";
+					if(!data.result.time11_30) document.getElementById("time11_30").style.display = "none";
+					if(!data.result.time12_00) document.getElementById("time12_00").style.display = "none";
+					if(!data.result.time12_30) document.getElementById("time12_30").style.display = "none";
+					if(!data.result.time13_00) document.getElementById("time13_00").style.display = "none";
+					if(!data.result.time13_30) document.getElementById("time13_30").style.display = "none";
+					if(!data.result.time14_00) document.getElementById("time14_00").style.display = "none";
+					if(!data.result.time14_30) document.getElementById("time14_30").style.display = "none";
+					if(!data.result.time15_00) document.getElementById("time15_00").style.display = "none";
+					if(!data.result.time15_30) document.getElementById("time15_30").style.display = "none";
+					if(!data.result.time16_00) document.getElementById("time16_00").style.display = "none";
+					if(!data.result.time16_30) document.getElementById("time16_30").style.display = "none";
+					if(!data.result.time17_00) document.getElementById("time17_00").style.display = "none";
+					
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+					alert("Arjun error:"+errorThrown);
+				}
+			});
+    
+    
+});
+			
 	</script>
 
 

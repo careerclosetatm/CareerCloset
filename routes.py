@@ -212,11 +212,13 @@ def appointment():
         if request.method == 'POST':
             form = AppointmentForm()
             #http://stackoverflow.com/questions/6699360/flask-sqlalchemy-update-a-rows-information/7831094
+            print("Editing tables")
             db.session.add(Appointment(user_id=user.user_id,date_Value=form.date_val.data,time=form.time_val.data))
             schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
             setattr(schedule_Value, form.time_val.data, False)
             #db.session.query(Schedule).filter(Schedule.date_Value=date_val).update({form.time_val.data: False})
-            db.session.commit()            
+            print("Table edited")
+            db.session.commit()
         return render_template("appointment.html")
             
     

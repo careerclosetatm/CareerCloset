@@ -1540,11 +1540,12 @@ samp {
   font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 code {
-  padding: 2px 4px;
+  padding: 2px 8px;
   font-size: 90%;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  color: #FFF;
+  background-color: #500000;
   border-radius: 4px;
+  margin: 10px 0;
 }
 kbd {
   padding: 2px 4px;
@@ -5729,6 +5730,30 @@ button.list-group-item-danger.active:focus {
 }
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
   border-bottom-color: #ddd;
+}
+.panel-bronze {
+  border-color: #965A38;
+}
+.panel-bronze > .panel-heading {
+  color: #fff;
+  background-color: #965A38;
+  border-color: #965A38;
+}
+.panel-silver {
+  border-color: #A8A8A8;
+}
+.panel-silver > .panel-heading {
+  color: #fff;
+  background-color: #A8A8A8;
+  border-color: #A8A8A8;
+}
+.panel-gold {
+  border-color: #C98910;
+}
+.panel-gold > .panel-heading {
+  color: #fff;
+  background-color: #C98910;
+  border-color: #C98910;
 }
 .panel-primary {
   border-color: #500000;

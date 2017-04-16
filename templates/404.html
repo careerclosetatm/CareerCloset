@@ -26,12 +26,15 @@
                 <div class="jumbotron">
                     <h6><span class="error-404">404: Oh No! Aliens are attacking our servers</span>
                     </h6>
-                    <p>Help Tuxy fend off the aliens so that we can find the page you were looking for</p>
-                    <p> Press &nbsp
-                        <span style="background-color:#900C3F; color:white;">&nbsp a &nbsp</span> to move left &nbsp &nbsp &nbsp
-                        <span style="background-color:#900C3F; color:white;">&nbsp d &nbsp</span> to move right &nbsp &nbsp &nbsp
-                        <span style="background-color:#900C3F; color:white;">&nbsp w &nbsp</span> to shoot
-                    </p>
+                    <p>Help Tuxy fend off the attack on our servers so that we can find the page you were looking for</p>
+                    <h6> Controls: </h6>
+                    <div class="row">
+                      <p>
+                        <div class="col-sm-4"><code>a</code> or swipe to move left</div>
+                        <div class="col-sm-4"><code>d</code> or swipe to move right</div>
+                        <div class="col-sm-4"><code>w</code> or tap to shoot</div>
+                      </p>
+                    </div><br/>
                     <!--game-->
                     <div class="row">
                       <div class="invaders">
@@ -57,7 +60,7 @@
                   <li>
                       <a href="{{ url_for('contact') }}">Contact</a>
                   </li>
-				  <li>				  
+				  <li>
                       <a href="{{ url_for('checkout') }}">Checkout</a>
                   </li>
                   <li>
@@ -94,6 +97,5 @@
    <script src="..\static\js\invaders.js"></script>
 
         <hr>
-        
+
         {% endblock %}
-        

@@ -1,32 +1,31 @@
 {% extends "layout.html" %}
- 
+
 {% block content %}
-  <h2>Sign up</h2>
- 
+
   {% for message in form.username.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
- 
+
   {% for message in form.fullname.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-   
-  
+
+
   {% for message in form.email.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-  
+
   {% for message in form.uin.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-   
+
   {% for message in form.password.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-  
-  
 
-<!--    
+
+
+<!--
   <form action="{{ url_for('signup') }}" method=post>
     {{ form.hidden_tag() }}
 
@@ -35,22 +34,25 @@
 
     {{ form.fullname.label }}
     {{ form.fullname }}
-     
+
     {{ form.email.label }}
     {{ form.email }}
 
     {{ form.uin.label }}
-    {{ form.uin }}     
-     
+    {{ form.uin }}
+
     {{ form.password.label }}
     {{ form.password }}
-     
+
     {{ form.submit }}
   </form>
-     
-     --> 
-	<form class="form-horizontal" action="{{ url_for('signup') }}" method=post>
-	{{ form.hidden_tag() }}
+
+     -->
+<div class="container">
+   <div class ="tiny">
+     <h1> Sign Up</h1>
+       <form class="form-horizontal" action="{{ url_for('signup') }}" method=post>
+	        {{ form.hidden_tag() }}
                     <fieldset>
                       <!-- Sign Up Form -->
                       <!-- Text input-->
@@ -65,7 +67,7 @@
                       <div class="control-group">
                         <label class="control-label" for="username">Username:</label>
                         <div class="controls">
-                          <input id="username" name="username" class="form-control" type="text" placeholder="Aggie" class="input-large" required="">                          
+                          <input id="username" name="username" class="form-control" type="text" placeholder="Aggie" class="input-large" required="">
                         </div>
                       </div>
 
@@ -81,7 +83,7 @@
                       <div class="control-group">
                         <label class="control-label" for="password">Password:</label>
                         <div class="controls">
-                          <input id="password" name="password" class="form-control" type="password" placeholder="" class="input-large" required="">                          
+                          <input id="password" name="password" class="form-control" type="password" placeholder="" class="input-large" required="">
                         </div>
                       </div>
 
@@ -93,7 +95,7 @@
                           <em>9 digits</em>
                         </div>
                       </div>
-                      
+
                       <!-- Button -->
                       <div class="control-group">
                         <label class="control-label" for="submit"></label>
@@ -102,5 +104,7 @@
                         </div>
                       </div>
                     </fieldset>
-                  </form>     
+        </form>
+      </div>
+    </div>
 {% endblock %}

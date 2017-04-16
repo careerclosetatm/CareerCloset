@@ -1,32 +1,33 @@
 {% extends "layout.html" %}
- 
+
 {% block content %}
-  <h2>Sign In</h2>
- 
+
+
   {% for message in form.email.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-   
+
   {% for message in form.password.errors %}
     <div class="flash">{{ message }}</div>
   {% endfor %}
-   
+
 <!--   <form action="{{ url_for('signin') }}" method=post>
     {{ form.hidden_tag() }}
-     
+
     {{ form.email.label }}
     {{ form.email }}
-     
+
     {{ form.password.label }}
     {{ form.password }}
-     
+
     {{ form.submit }}
   </form> -->
-  
-  <form class = "form-horizontal" action="{{ url_for('signin') }}" method=post>
-    {{ form.hidden_tag() }}
-     
-     <fieldset>
+<div class="container">
+    <div class ="tiny">
+      <h1> Sign In</h1>
+      <form class = "form-horizontal" action="{{ url_for('signin') }}" method=post>
+        {{ form.hidden_tag() }}
+        <fieldset>
                       <!-- Sign In Form -->
                       <!-- Text input-->
                       <div class="control-group">
@@ -35,7 +36,7 @@
                           <input required="" id="email" name="email" type="text" class="form-control" placeholder="Aggie" class="input-medium" required="">
                         </div>
                       </div>
-                      
+
                        <!-- Password input-->
                       <div class="control-group">
                         <label class="control-label" for="password">Password:</label>
@@ -43,7 +44,7 @@
                           <input required="" id="password" name="password" class="form-control" type="password" placeholder="" class="input-medium">
                         </div>
                       </div>
-                      
+
                       <!-- Button -->
                       <div class="control-group">
                         <label class="control-label" for="submit"></label>
@@ -51,6 +52,8 @@
                           <button id="submit" name="submit" class="btn btn-primary">Sign In</button>
                         </div>
                       </div>
- 
-   
+        </fieldset>
+      </form>
+    </div>
+  </div>
 {% endblock %}

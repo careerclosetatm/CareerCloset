@@ -10,7 +10,7 @@
 	{% for message in form.name.errors %}
 	  <div class="flash">{{ message }}</div>
 	{% endfor %}
-	 
+
 	{% for message in form.email.errors %}
 	  <div class="flash">{{ message }}</div>
 	{% endfor %}
@@ -18,36 +18,36 @@
 	{% for message in form.phone.errors %}
 	  <div class="flash">{{ message }}</div>
 	{% endfor %}
-	 
+
 	{% for message in form.subject.errors %}
 	  <div class="flash">{{ message }}</div>
 	{% endfor %}
-	 
+
 	{% for message in form.message.errors %}
 	  <div class="flash">{{ message }}</div>
 	{% endfor %}
-	
+
 	<form action = "{{url_for('contact')}}" method = post>
-	
+
 	{{form.hidden_tag()}}
-	
+
 	{{form.name.label}}
 	{{form.name}}
-	
+
 	{{form.email.label}}
 	{{form.email}}
 
 	{{form.phone.label}}
 	{{form.phone}}
-	
+
 	{{form.subject.label}}
 	{{form.subject}}
-	
+
 	{{form.message.label}}
 	{{form.message}}
-	
+
 	{{form.submit}}
-	
+
 	</form>
 {% endif %}
 -->
@@ -150,7 +150,42 @@
                     <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
             </div>
+            <div class="col-md-4">
+                <h3>About the Team</h3>
+                <ul class="list-group panel-primary">
+                  <li class="list-group-item panel-heading panel-title">Executive Leadership <a href"mailto:careercloset.tamu@gmail.com?Subject=Career%20Closet" style="float:right"><i class="fa fa-envelope-o"></i> Mail</a></li>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Alex Goodman</Strong>, Executive Director</li>
+                      <li class="list-group-item"><strong>Margaret Peterman</Strong>, Assistant Executive Director</li>
+                    </ul>
+                  <li class="list-group-item panel-heading panel-title">Operations <a href"mailto:careercloset.tamu@gmail.com?Subject=Career%20Closet" style="float:right"><i class="fa fa-envelope-o"></i> Mail</a></li></li>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Foster Pugh</Strong>, Director of Internal Operations</li>
+                      <li class="list-group-item"><strong>Sonali Patel</Strong>, Assistant Director of Internal Operations</li>
+                    </ul>
+                  <li class="list-group-item panel-heading panel-title">Operations <a href"mailto:development.tamucareercloset@gmail.com?Subject=Career%20Closet" style="float:right"><i class="fa fa-envelope-o"></i> Mail</a></li></li>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Amanda Dick</Strong>, Director of Human Resource Management</li>
+                      <li class="list-group-item"><strong>Kirby Stockard</Strong>, Assistant Director of Human Resource Management</li>
+                    </ul>
+                  <li class="list-group-item panel-heading panel-title">Development <a href"mailto:hrm.careercloset.tamu@gmail.com?Subject=Career%20Closet" style="float:right"><i class="fa fa-envelope-o"></i> Mail</a></li></li>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Mariam Atooka</Strong>, Director of Development</li>
+                      <li class="list-group-item"><strong>Leah Vance</Strong>, Assistant Director of Development</li>
+                    </ul>
+                  <li class="list-group-item panel-heading panel-title">External Operations <a href"mailto:donations.tamucareercloset@gmail.com?Subject=Career%20Closet" style="float:right"><i class="fa fa-envelope-o"></i> Mail</a></li></li>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Alisha Ahamed</Strong>, Executive Director</li>
+                      <li class="list-group-item"><strong>Arun Mathew</Strong>, Assistant Executive Director</li>
+                    </ul>
+                  <li class="list-group-item panel-heading panel-title">Marketing/Communication <a href"mailto:commun.tamucareercloset@gmail.com?Subject=Career%20Closet" style="float:right"><i class="fa fa-envelope-o"></i> Mail</a></li></li>
+                    <ul class="list-group">
+                      <li class="list-group-item"><strong>Ashley Corry</Strong>, Executive Director</li>
+                      <li class="list-group-item"><strong>Molly Smith</Strong>, Assistant Executive Director</li>
+                    </ul>
+                </ul>
 
+            </div>
         </div>
         <!-- /.row -->
 
@@ -165,7 +200,3 @@
 
 
 {% endblock %}
-
-
-
- 

@@ -65,7 +65,6 @@ header.carousel .fill {
 
 footer {
     position: absolute;
-
     width:100%;
     margin: 50px 0 0;
     height: auto;
@@ -291,6 +290,32 @@ fieldset[disabled] .btn-label.focus {
   padding-top: 8px;
   padding-bottom: 8px;
 }
+
+/* Tiny Container*/
+.tiny {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 380px;
+  align-items: center;
+  text-align: left;
+}
+
+/*@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}*/
+
 /*Login Modal Module - Will Test again for final prototype
 .prettyline {
   height: 5px;

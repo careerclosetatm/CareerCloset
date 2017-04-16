@@ -61,16 +61,16 @@
                       <a href="{{ url_for('appointment') }}">Appointment</a>
                   </li>
                   <li>
+                    {% if ('email' in session and session["email"]!="careerclosetatm@gmail.com") or ('email' not in session) %}
                       <a href="{{ url_for('learn') }}">Learn</a>
+                    {% endif %}
                   </li>
                   <li>
-                    {% if 'email' in session and session["email"]!="careerclosetatm@gmail.com" %}
                     <a href="{{ url_for('donate') }}">Donate</a>
-                    {% endif %}
                   </li>
   				        <li>
   				          {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
-                    <a href="{{ url_for('checkout') }}">Checkout</a>
+                    <a href="{{ url_for('checkout') }}">Dashboard</a>
                     {% endif %}
                   </li>
               </ul>
@@ -87,7 +87,7 @@
                 </li>
                 <li>
                     {% if 'email' in session %}
-                    <a href="{{ url_for('signout') }}"><span>Welcome <em>{{ session["fullname"] }}</em></span>,&nbspSignOut</a>
+                    <a href="{{ url_for('signout') }}"><i class="fa fa-sign-out fa-2x"></i></a>
                     {% endif %}
                 <li>
                 </ul>

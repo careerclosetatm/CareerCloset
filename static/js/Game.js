@@ -39,7 +39,7 @@ SI.Game.prototype.start = function () {
  */
 SI.Game.prototype.initializeCanvas = function () {
 	var $canvas = $('#gameview');
-	
+
 	var $bgimg = $('#background');
 	$bgimg.css('display', 'block');
 	$bgimg.attr('width', SI.Sizes.width + 'px');
@@ -62,12 +62,16 @@ SI.Game.prototype.attachKeyboardEvents = function() {
 
 	$(document).bind('touchmove', function (e) {
 		var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-		e.preventDefault();
+		e.preventDefault(e);
 		self.playerShip.setLocation(touch.pageX - self.ctx.canvas.offsetLeft);
+	});
+	$(document).bind('touchend', function (e) {
+		var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+		e.preventDefault(e);
 	});
 	$(document).bind('touchstart', function (e) {
 		var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-		e.preventDefault();
+		e.preventDefault(e);
 		self.launchPlayerRocket();
 	});
 }
@@ -103,7 +107,7 @@ SI.Game.prototype.initializeGame = function () {
 	this.enemySpeed = SI.Sizes.enemyStepHort;
 
 	var self = this;
-	this.clock = setInterval(function () {	
+	this.clock = setInterval(function () {
 		self.moveAllElements();
 		self.deleteExplodedRockets();
 		self.deleteExplodedEnemyShips();
@@ -423,10 +427,10 @@ SI.Game.prototype.drawStatus = function () {
 	this.ctx.lineWidth = SI.Sizes.lineWidth;
 
 	var output = 'Points: ' + this.points;
-	this.ctx.fillText(output, SI.Sizes.leftMargin, SI.Sizes.textMargin); 
+	this.ctx.fillText(output, SI.Sizes.leftMargin, SI.Sizes.textMargin);
 
 	output = 'Lives left: ' + this.lives;
-	this.ctx.fillText(output, SI.Sizes.textRightMargin, SI.Sizes.textMargin); 
+	this.ctx.fillText(output, SI.Sizes.textRightMargin, SI.Sizes.textMargin);
 }
 
 SI.Game.prototype.newGamePrompt = function (message) {

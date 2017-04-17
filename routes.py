@@ -42,10 +42,10 @@ def dashboard():
                 if suits != None:
                     suits.available = False
                     db.session.commit()   
-
-                return render_template("dashboard.html", success = True, form=form)
+                suits = Suits.query.filter(Suits.available==True).all()
+                return render_template("dashboard.html", success = True, form=form, suits=suits)
         elif request.method == "GET":
-            suits = Suits.query.filter().all()                                
+            suits = Suits.query.filter(Suits.available==True).all()                               
             return render_template("dashboard.html", form=form, suits=suits)  
     else:
         return render_template("home.html")

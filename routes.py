@@ -4,7 +4,7 @@ from forms import ContactForm, SignupForm, SigninForm, AvailabilityForm, Checkou
 from flask_mail import Message, Mail
 from models import db, User, Suits, Schedule, Appointment
 from sqlalchemy import or_, and_, engine, table
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 
 mail = Mail()
@@ -41,7 +41,23 @@ def dashboard():
                 suits = Suits.query.filter(Suits.suit_id == form.suiteId.data.upper()).first()                
                 if suits != None:
                     suits.available = False
-                    db.session.commit()   
+                    db.session.commit()  
+                    checkoutDate = datetime.now().date()
+                    #checkoutDate = datetime.strptime(checkoutDateVal,"%m/%d/%y")
+                    returnDate = checkoutDate + timedelta(days=5)                                                        
+                    msg = Message("Confirmation of suit checkout",
+                              sender='careerclosetatm@gmail.com',
+                              recipients=[form.email.data])
+                    msg.body = """
+                        From: Team Career Closet <%s>,
+                        Howdy, 
+                        This is a confirmation of your suit %s checkout on %s.
+                        Please return the suit before the deadline %s
+                        Gigem.
+                        Team Career Closet.
+                        """ % ('careerclosetatm@gmail.com',form.suiteId.data.upper(),checkoutDate,returnDate)
+                    mail.send(msg) 
+                    
                 suits = Suits.query.filter(Suits.available==True).all()
                 return render_template("dashboard.html", success = True, form=form, suits=suits)
         elif request.method == "GET":

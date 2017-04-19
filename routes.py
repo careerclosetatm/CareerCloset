@@ -227,14 +227,20 @@ def appointment():
             msg = Message("Confirmation of your appointment with the Career Closet",
                               sender='careerclosetatm@gmail.com',
                               recipients=[session["email"]])
+#             msg.body = """
+#                 From: Team Career Closet <%s>,
+#                 Howdy %s, 
+#                 This is a confirmation of your appointment with the Career Closet on %s at %s. Please turn up with your Tamu student ID card on the above mentioned date and time.
+#                 Gigem.
+#                 Team Career Closet.
+#                 """ % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
             msg.body = """
-                From: Team Career Closet <%s>,
-                Howdy %s, 
-                This is a confirmation of your appointment with the Career Closet on %s at %s.
-                Please turn up with your Tamu student ID card on the above mentioned date and time.
-                Gigem.
-                Team Career Closet.
-                """ % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
+Howdy %s, 
+This is a confirmation of your appointment with the Career Closet on %s at %s. Please turn up with your Tamu student ID card on the above mentioned date and time.
+Gigem.
+Team Career Closet.
+""" % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
+            
             mail.send(msg)
             return render_template("appointment.html", success=True)
         return render_template("appointment.html")

@@ -59,7 +59,7 @@
                       <div class="control-group">
                         <label class="control-label" for="email">Email:</label>
                         <div class="controls">
-                          <input id="email" name="email" class="form-control" type="text" placeholder="Aggie@tamu.edu" class="input-large" required="">
+                          <input id="email" name="email" class="form-control" type="email" placeholder="Aggie@tamu.edu" class="input-large" required="" required data-validation-required-message="Please enter your email address.">
                         </div>
                       </div>
 
@@ -89,9 +89,9 @@
 
                       <!-- Text input-->
                       <div class="control-group">
-                        <label class="control-label" for="uin">UIN:</label>
+                        <label class="control-label" for="uin">UIN:(9 digit number)</label>
                         <div class="controls">
-                          <input id="uin" name="uin" class="form-control" type="text" placeholder="123456789" class="input-large" required="">
+                          <input id="uin" name="uin" class="form-control" type="text" placeholder="123456789" class="input-large" required="" pattern="[0-9]{9}" data-validation-pattern-message="UIN is 9 digit number">
                           <em>9 digits</em>
                         </div>
                       </div>

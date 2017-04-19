@@ -26,10 +26,12 @@ def donate():
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "email" not in session:
+        session['path'] = request.url
         return redirect(url_for("signin"))
     user = User.query.filter_by(email = session["email"]).first()
     #print(user)
     if user is None:
+        session['path'] = request.url
         return redirect(url_for("signin"))
     elif user.email =="careerclosetatm@gmail.com":
         form = CheckoutForm()
@@ -102,16 +104,19 @@ def signin():
             if user is None:
                 return redirect(url_for("signin"))
             else:
-                session['fullname'] = user.fullname
+                session['fullname'] = user.fullname            
+            path = session['path']
+            session['path'] = None
+            if path is not None: return redirect(path) 
             return redirect(url_for('home'))
                  
     elif request.method == 'GET':
         return render_template('signin.html', form=form)
 
 @app.route('/signout')
-def signout():
- 
+def signout(): 
     if 'email' not in session:
+        session['path'] = request.url
         return redirect(url_for('signin'))
      
     session.pop('email', None)
@@ -202,9 +207,11 @@ def learn():
 @app.route("/appointment", methods=['GET', 'POST'])
 def appointment():
     if "email" not in session:
+        session['path'] = request.url
         return redirect(url_for("signin"))
     user = User.query.filter_by(email = session["email"]).first()
     if user is None:
+        session['path'] = request.url
         return redirect(url_for("signin"))
     
     else:

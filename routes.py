@@ -217,15 +217,12 @@ def appointment():
     else:
         if request.method == 'POST':
             form = AppointmentForm()
-            time_val = request.form["optradio"]
+            time_val = request.form["optradio"]            
             d_val = request.form["date_val"]
             date_val = datetime.strptime(d_val, "%m/%d/%Y")
             date_val = datetime.strftime(date_val, "%Y-%m-%d")
             db.session.add(Appointment(user_id=user.user_id,date_Value=date_val,time=time_val))
             schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
-            print(schedule_Value.date_Value)
-            print(schedule_Value.time12_00)
-            print(time_val)
             setattr(schedule_Value, time_val, False)
             db.session.commit()        
             schedule_Value = Schedule.query.filter(Schedule.date_Value == date_val).first()
@@ -246,7 +243,7 @@ Howdy %s,
 This is a confirmation of your appointment with the Career Closet on %s at %s. Please turn up with your Tamu student ID card on the above mentioned date and time.
 Gigem.
 Team Career Closet.
-""" % ('careerclosetatm@gmail.com',user.fullname,date_val,time_val)
+""" % (user.fullname,date_val,time_val)
             
             mail.send(msg)
             return render_template("appointment.html", success=True)

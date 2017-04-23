@@ -61,7 +61,11 @@
 </script>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+	{% if success %}
+	<div class="mascot-callout">
+		<p class="bubble"><em>"Well done master {% if 'email' in session %}<strong>{{ session["fullname"] }}</strong> {% endif %}, you have booked the appointment. I have sent you a confirmation mail.</em></p>
+	</div>
+	{% endif %}
 	<!-- Page Content -->
 
 	<div class="container">
@@ -79,11 +83,7 @@
 					</div>
 			</div>
 			<!-- /.row -->
-			{% if success %}
-	<div class"mascot-callout">
-		<p>Congratulations! We have your appointment booked. Please check your email for details.</p>
-	</div>
-{% endif %}
+
 
 			<!-- Image Header -->
 			<div class="row">
@@ -108,8 +108,8 @@
 										</div>
 										<div class="col-md-6 apppad" data-toggle="buttons">
 											<span><strong>Morning</strong></span><br/><br/>
-											<label id= "time9_00" class="btn btn-label"><input type="radio" name="optradio" value="time09_00"><strong>09:00 AM</strong></label>
-											<label id= "time9_30" class="btn btn-label"><input type="radio" name="optradio" value="time09_30"><strong>09:30 AM</strong></label>
+											<label id= "time9_00" class="btn btn-label"><input type="radio" name="optradio" value="time09_00"><strong>9:00 AM</strong></label>
+											<label id= "time9_30" class="btn btn-label"><input type="radio" name="optradio" value="time09_30"><strong>9:30 AM</strong></label>
 											<label id= "time10_00" class="btn btn-label"><input type="radio" name="optradio"value="time10_00"><strong>10:00 AM</strong></label>
 											<label id= "time10_30" class="btn btn-label"><input type="radio" name="optradio"value="time10_30"><strong>10:30 AM</strong></label>
 											<label id= "time11_00" class="btn btn-label"><input type="radio" name="optradio" value="time11_00"><strong>11:00 AM</strong></label>
@@ -117,16 +117,16 @@
 											<br/><br/><span><strong>Afternoon</strong></span><br/><br/>
 											<label id= "time12_00" class="btn btn-label"><input type="radio" name="optradio" value="time12_00"><strong>12:00 PM</strong></label>
 											<label id= "time12_30" class="btn btn-label"><input type="radio" name="optradio" value="time12_30"><strong>12:30 PM</strong></label>
-											<label id= "time13_00" class="btn btn-label"><input type="radio" name="optradio" value="time13_00"><strong>01:00 PM</strong></label>
-											<label id= "time13_30" class="btn btn-label"><input type="radio" name="optradio" value="time13_30"><strong>01:30 PM</strong></label>
-											<label id= "time14_00" class="btn btn-label"><input type="radio" name="optradio" value="time14_00"><strong>02:00 PM</strong></label>
-											<label id= "time14_30" class="btn btn-label"><input type="radio" name="optradio" value="time14_30"><strong>02:30 PM</strong></label>
+											<label id= "time13_00" class="btn btn-label"><input type="radio" name="optradio" value="time13_00"><strong>1:00 PM</strong></label>
+											<label id= "time13_30" class="btn btn-label"><input type="radio" name="optradio" value="time13_30"><strong>1:30 PM</strong></label>
+											<label id= "time14_00" class="btn btn-label"><input type="radio" name="optradio" value="time14_00"><strong>2:00 PM</strong></label>
+											<label id= "time14_30" class="btn btn-label"><input type="radio" name="optradio" value="time14_30"><strong>2:30 PM</strong></label>
 											<br/><br/><span><strong>Evening</strong></span><br/><br/>
-											<label id= "time15_00" class="btn btn-label"><input type="radio" name="optradio" value="time15_00"><strong>03:00 PM</strong></label>
-											<label id= "time15_30" class="btn btn-label"><input type="radio" name="optradio" value="time15_30"><strong>03:30 PM</strong></label>
-											<label id= "time16_00" class="btn btn-label"><input type="radio" name="optradio" value="time16_00"><strong>04:00 PM</strong></label>
-											<label id= "time16_30" class="btn btn-label"><input type="radio" name="optradio" value="time16_30"><strong>04:30 PM</strong></label>
-											<label id= "time17_00" class="btn btn-label"><input type="radio" name="optradio" value="time17_00"><strong>05:00 PM</strong></label>
+											<label id= "time15_00" class="btn btn-label"><input type="radio" name="optradio" value="time15_00"><strong>3:00 PM</strong></label>
+											<label id= "time15_30" class="btn btn-label"><input type="radio" name="optradio" value="time15_30"><strong>3:30 PM</strong></label>
+											<label id= "time16_00" class="btn btn-label"><input type="radio" name="optradio" value="time16_00"><strong>4:00 PM</strong></label>
+											<label id= "time16_30" class="btn btn-label"><input type="radio" name="optradio" value="time16_30"><strong>4:30 PM</strong></label>
+											<label id= "time17_00" class="btn btn-label"><input type="radio" name="optradio" value="time17_00"><strong>5:00 PM</strong></label>
 
 										</div>
 									</div>

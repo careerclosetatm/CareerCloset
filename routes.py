@@ -104,8 +104,11 @@ def signin():
             if user is None:
                 return redirect(url_for("signin"))
             else:
-                session['fullname'] = user.fullname            
-            path = session['path']
+                session['fullname'] = user.fullname  
+            if "path" in session:           
+                path = session['path']
+            else:
+                path = None
             session['path'] = None
             if path is not None: return redirect(path) 
             return redirect(url_for('home'))
@@ -116,7 +119,7 @@ def signin():
 @app.route('/signout')
 def signout(): 
     if 'email' not in session:
-        session['path'] = request.url
+        #session['path'] = request.url
         return redirect(url_for('signin'))
      
     session.pop('email', None)
@@ -2348,7 +2351,7 @@ with app.test_request_context():
     db.session.commit()   
     '''
 
-if __name__=="__main__":
+if __name__=="__main__":    
     port = int(os.environ.get('PORT',5000))
     app.run(host='0.0.0.0',port=port,debug=True)
     #app.run(debug=True)

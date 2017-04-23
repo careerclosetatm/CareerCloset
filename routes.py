@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, flash, request, session, url_for, redirect, jsonify
-from forms import ContactForm, SignupForm, SigninForm, AvailabilityForm, CheckoutForm,AppointmentForm
+from forms import ContactForm, SignupForm, SigninForm, AvailabilityForm, CheckoutForm,AppointmentForm, CheckinForm
 from flask_mail import Message, Mail
 from models import db, User, Suits, Schedule, Appointment
 from sqlalchemy import or_, and_, engine, table
@@ -68,6 +68,39 @@ def dashboard():
     else:
         return render_template("home.html")
     
+
+@app.route("/checkin", methods=["GET", "POST"])
+def checkin():
+    if "email" not in session:
+        session['path'] = request.url
+        return redirect(url_for("signin"))
+    user = User.query.filter_by(email = session["email"]).first()
+    #print(user)
+    if user is None:
+        session['path'] = request.url
+        return redirect(url_for("signin"))
+    elif user.email =="careerclosetatm@gmail.com":
+        form = CheckinForm()
+        if request.method == "POST":
+            if form.validate() == False:
+                flash("All fields are required")
+                return render_template("checkin.html", form=form)
+            else:
+                suits = Suits.query.filter(Suits.suit_id == form.suiteId.data.upper()).first()                
+                if suits != None:
+                    suits.available = True
+                    db.session.commit()  
+                    checkinDate = datetime.now().date()
+                    
+                suits = Suits.query.filter(Suits.available==False).all()
+                return render_template("checkin.html", success = True, form=form, suits=suits)
+        elif request.method == "GET":
+            suits = Suits.query.filter(Suits.available==False).all()                               
+            return render_template("checkin.html", form=form, suits=suits)  
+    else:
+        return render_template("home.html")
+    
+
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():

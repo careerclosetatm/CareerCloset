@@ -1,0 +1,141 @@
+{% extends "layout.html" %} {% block content %}
+{% if success %}
+<div class = "mascot-callout">
+	<p class="bubble"><em>Ofcourse, Master {{ session["fullname"] }} I'll mark that suit as checked out</em></p>
+</div>
+{% endif %}
+{% for message in form.suiteId.errors %}
+	<div class="flash">{{ message }}</div>
+{% endfor %}
+
+{% for message in form.email.errors %}
+	<div class="flash">{{ message }}</div>
+{% endfor %}
+<!-- Page Content -->
+
+<div class="container">
+	<!-- Page Heading/Breadcrumbs -->
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Admin Dashboard</h1>
+			<ol class="breadcrumb">
+				<li><a href="{{url_for('home')}}">Home</a></li>
+				<li class="active">Dashboard</li>
+			</ol>
+		</div>
+	</div>
+	<!-- /.row -->
+
+
+	<!-- Service Tabs -->
+	        <div class="row">
+	            <div class="col-lg-12">
+	                <h2 class="page-header">Service Tabs</h2>
+	            </div>
+	            <div class="col-md-12">
+
+	                <ul id="myTab" class="nav nav-tabs nav-justified">
+	                    <li class="active"><a href="#service-zero" data-toggle="tab"><i class="fa fa-tree"></i> Check In</a>
+	                    </li>
+	                    <li class=""><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Check Out</a>
+	                    </li>
+	                </ul>
+
+	                <div id="myTabContent" class="tab-content">
+	                    <div class="tab-pane fade active in" id="service-zero">
+	                        <div class ="tiny">
+														<h1> Checkout Suit</h1>
+														<form name="CheckoutForm" class = "form-horizontal" action = "{{url_for('dashboard')}}" method = post>
+															{{ form.hidden_tag() }}
+															<fieldset>
+																						<!-- Sign In Form -->
+																						<!-- Text input-->
+																						<div class="control-group">
+																							<label class="control-label" for="email">Suit Id:</label>
+																							<div class="controls">
+																								<!-- <input required="" id="suiteId" name="suiteId" type="text" class="form-control" placeholder="Enter suit id" class="input-medium" required>-->
+																								<select name="suiteId" id="suiteId">
+																									<option value="" disabled selected>Select SuitID to Checkout</option>
+																									{% for suit in suits %}
+																										<option value="{{suit.suit_id}}">{{suit.suit_id}}</option>
+																									{% endfor %}
+																								</select>
+																							</div>
+																						</div>
+
+																						<!-- Text input-->
+																						<div class="control-group">
+																							<label class="control-label" for="email">Email:</label>
+																							<div class="controls">
+																								<input required="" id="email" name="email" type="text" class="form-control" placeholder="aggie@email.com" class="input-medium" required>
+																							</div>
+																						</div>
+
+																						<!-- Button -->
+																						<div class="control-group">
+																							<label class="control-label" for="submit"></label>
+																							<div class="controls">
+																								<button id="submit" name="submit" class="btn btn-primary">Checkout</button>
+																							</div>
+																						</div>
+															</fieldset>
+														<!--{{form.hidden_tag()}}
+
+														{{form.suiteId.label}}
+														{{form.suiteId}}
+
+														{{form.email.label}}
+														{{form.email}}
+
+														{{form.submit}}-->
+
+														</form>
+													</div>
+
+	                    </div>
+	                    <div class="tab-pane fade" id="service-one">
+	                        <h4>Service One</h4>
+	                        <div class="row">
+														<div class="tiny">
+															<h1>Checkin Suit</h1>
+															<form name="CheckinForm" class="form-horizontal"
+																action="{{url_for('checkin')}}" method=post>
+																{{ form.hidden_tag() }}
+																<fieldset>
+																	<!-- Sign In Form -->
+																	<!-- Text input-->
+																	<div class="control-group">
+																		<label class="control-label" for="email">Suit Id:</label>
+																		<div class="controls">
+																			<!-- <input required="" id="suiteId" name="suiteId" type="text" class="form-control" placeholder="Enter suit id" class="input-medium" required>-->
+																			<select name="suiteId" id="suiteId">
+																				<option value="" disabled selected>Select SuitID to
+																					Checkin</option> {% for suit in suits %}
+																				<option value="{{suit.suit_id}}">{{suit.suit_id}}</option> {%
+																				endfor %}
+																			</select>
+																		</div>
+																	</div>
+
+																	<!-- Button -->
+																	<div class="control-group">
+																		<label class="control-label" for="submit"></label>
+																		<div class="controls">
+																			<button id="submit" name="submit" class="btn btn-primary">Checkin</button>
+																		</div>
+																	</div>
+																</fieldset>
+
+															</form>
+														</div>
+	                        </div>
+	                    </div>
+
+	                </div>
+
+	            </div>
+	        </div>
+
+</div>
+
+{% endblock %}

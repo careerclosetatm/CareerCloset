@@ -1,5 +1,13 @@
 {% extends "layout.html" %} {% block content %}
+{% if success %}
+<div class="mascot-callout">
+<p class="bubble"><em>Ofcourse, Master {{ session["fullname"] }} I'll mark that suit	as checked in</em></p>
+</div>
+{% endif %} {% for message in form.suiteId.errors %}
+<div class="flash">{{ message }}</div>
+{% endfor %}
 <!-- Page Content -->
+
 
 <div class="container">
 	<!-- Page Heading/Breadcrumbs -->
@@ -14,14 +22,7 @@
 	</div>
 	<!-- /.row -->
 
-	{% if success %}
-	<divclass"mascot-callout">
-	<p>Ofcourse, Master {{ session["fullname"] }} I'll mark that suit
-		as checked in</p>
-</div>
-{% endif %} {% for message in form.suiteId.errors %}
-<div class="flash">{{ message }}</div>
-{% endfor %}
+	
 <div class="tiny">
 	<h1>Checkin Suit</h1>
 	<form name="CheckinForm" class="form-horizontal"

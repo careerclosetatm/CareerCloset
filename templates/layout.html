@@ -70,7 +70,12 @@
                   </li>
   				        <li>
   				          {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
-                    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+                    <a href="{{ url_for('dashboard') }}">Checkout</a>
+                    {% endif %}
+                  </li>
+                  <li>
+  				          {% if 'email' in session and session["email"]=="careerclosetatm@gmail.com" %}
+                    <a href="{{ url_for('checkin') }}">Checkin</a>
                     {% endif %}
                   </li>
               </ul>

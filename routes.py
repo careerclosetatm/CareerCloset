@@ -23,6 +23,10 @@ def home():
 def donate():
     return render_template("donate.html")
 
+@app.route("/dashboard0", methods=["GET", "POST"])
+def dashboard0():
+    return render_template("dashboard0.html")
+
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():
     if "email" not in session:

@@ -1,16 +1,37 @@
 {% extends "layout.html" %} {% block content %}
-{% if success %}
+{% if success == 'checkout-success' %}
 <div class = "mascot-callout">
 	<p class="bubble"><em>Ofcourse, Master {{ session["fullname"] }} I'll mark that suit as checked out</em></p>
 </div>
+{% elif success == 'checkin-success' %}
+<div class = "mascot-callout">
+	<p class="bubble"><em>Ofcourse, Master {{ session["fullname"] }} I'll mark that suit as checked in</em></p>
+</div>
 {% endif %}
-{% for message in form.suiteId.errors %}
+{% for message in form1.suiteId.errors %}
 	<div class="flash">{{ message }}</div>
 {% endfor %}
 
-{% for message in form.email.errors %}
+{% for message in form1.email.errors %}
 	<div class="flash">{{ message }}</div>
 {% endfor %}
+
+{% for message in form2.suiteId.errors %}
+	<div class="flash">{{ message }}</div>
+{% endfor %}
+
+
+
+<script>
+function checkoutButton() {
+	alert("altered checkout");
+    document.getElementsByName("checkoutButtonClicked").value = "True";
+}
+function checkinButton() {
+	alert("altered checkin");
+    document.getElementsByName("checkinButtonClicked").value = "True";
+}
+</script>
 <!-- Page Content -->
 
 <div class="container">
@@ -30,24 +51,27 @@
 	<!-- Service Tabs -->
 	        <div class="row">
 	            <div class="col-lg-12">
-	                <h2 class="page-header">Service Tabs</h2>
+	                
 	            </div>
 	            <div class="col-md-12">
 
 	                <ul id="myTab" class="nav nav-tabs nav-justified">
-	                    <li class="active"><a href="#service-zero" data-toggle="tab"><i class="fa fa-tree"></i> Check In</a>
+	                    <li class="active"><a href="#service-zero" data-toggle="tab"><i class="fa fa-tree"></i> Check Out</a>
 	                    </li>
-	                    <li class=""><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Check Out</a>
+	                    <li class=""><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Check In</a>
 	                    </li>
-	                </ul>
-
+	                </ul>					
 	                <div id="myTabContent" class="tab-content">
 	                    <div class="tab-pane fade active in" id="service-zero">
+	                        <iframe src="{{url_for('dashboard')}}"></iframe>
 	                        <div class ="tiny">
-														<h1> Checkout Suit</h1>
-														<form name="CheckoutForm" class = "form-horizontal" action = "{{url_for('dashboard')}}" method = post>
-															{{ form.hidden_tag() }}
+														<h1> potato Suit</h1>
+														<form name="CheckoutForm" class = "form-horizontal" action = "{{url_for('dashboard0')}}" method = post>
+															{{ form1.hidden_tag() }}
 															<fieldset>
+															
+															<input type="hidden" name="checkoutButtonClicked" id="checkoutButtonClicked" value="False">
+															<input type="hidden" name="checkinButtonClicked" id="checkinButtonClicked" value="False">
 																						<!-- Sign In Form -->
 																						<!-- Text input-->
 																						<div class="control-group">
@@ -56,7 +80,7 @@
 																								<!-- <input required="" id="suiteId" name="suiteId" type="text" class="form-control" placeholder="Enter suit id" class="input-medium" required>-->
 																								<select name="suiteId" id="suiteId">
 																									<option value="" disabled selected>Select SuitID to Checkout</option>
-																									{% for suit in suits %}
+																									{% for suit in suits1 %}
 																										<option value="{{suit.suit_id}}">{{suit.suit_id}}</option>
 																									{% endfor %}
 																								</select>
@@ -75,32 +99,24 @@
 																						<div class="control-group">
 																							<label class="control-label" for="submit"></label>
 																							<div class="controls">
-																								<button id="submit" name="submit" class="btn btn-primary">Checkout</button>
+																								<button id="submit" name="checkout" class="btn btn-primary" onclick="checkoutButton()">Checkout</button>
 																							</div>
 																						</div>
 															</fieldset>
-														<!--{{form.hidden_tag()}}
-
-														{{form.suiteId.label}}
-														{{form.suiteId}}
-
-														{{form.email.label}}
-														{{form.email}}
-
-														{{form.submit}}-->
 
 														</form>
-													</div>
+														</div>
+													
 
 	                    </div>
 	                    <div class="tab-pane fade" id="service-one">
-	                        <h4>Service One</h4>
 	                        <div class="row">
+	                        <iframe src="{{url_for('checkin')}}"></iframe>
 														<div class="tiny">
 															<h1>Checkin Suit</h1>
 															<form name="CheckinForm" class="form-horizontal"
-																action="{{url_for('checkin')}}" method=post>
-																{{ form.hidden_tag() }}
+																action="{{url_for('dashboard0')}}" method=post>
+																{{ form2.hidden_tag() }}
 																<fieldset>
 																	<!-- Sign In Form -->
 																	<!-- Text input-->
@@ -110,7 +126,7 @@
 																			<!-- <input required="" id="suiteId" name="suiteId" type="text" class="form-control" placeholder="Enter suit id" class="input-medium" required>-->
 																			<select name="suiteId" id="suiteId">
 																				<option value="" disabled selected>Select SuitID to
-																					Checkin</option> {% for suit in suits %}
+																					Checkin</option> {% for suit in suits2 %}
 																				<option value="{{suit.suit_id}}">{{suit.suit_id}}</option> {%
 																				endfor %}
 																			</select>
@@ -121,7 +137,7 @@
 																	<div class="control-group">
 																		<label class="control-label" for="submit"></label>
 																		<div class="controls">
-																			<button id="submit" name="submit" class="btn btn-primary">Checkin</button>
+																			<button id="submit" name="checkin" class="btn btn-primary" onclick="checkinButton()">Checkin</button>
 																		</div>
 																	</div>
 																</fieldset>

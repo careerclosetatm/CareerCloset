@@ -25,7 +25,79 @@ def donate():
 
 @app.route("/dashboard0", methods=["GET", "POST"])
 def dashboard0():
-    return render_template("dashboard0.html")
+    if "email" not in session:
+        session['path'] = request.url
+        return redirect(url_for("signin"))
+    user = User.query.filter_by(email = session["email"]).first()
+    #print(user)
+    if user is None:
+        session['path'] = request.url
+        return redirect(url_for("signin"))
+    elif user.email =="careerclosetatm@gmail.com":
+        form1 = CheckoutForm()
+        form2 = CheckinForm()
+        if request.method == "POST":
+            print "inside post"
+            print request.form["checkoutButtonClicked"]
+            print request.form["checkinButtonClicked"]
+            if request.form["checkoutButtonClicked"]=="True":
+                # do some listing...
+                print "checkout"
+                if form1.validate() == False:
+                    flash("All fields are required")
+                    return render_template("dashboard0.html", form1=form1)
+                else:
+                    suits = Suits.query.filter(Suits.suit_id == form1.suiteId.data.upper()).first()                
+                    if suits != None:
+                        suits.available = False
+                        db.session.commit()  
+                        checkoutDate = datetime.now().date()
+                        #checkoutDate = datetime.strptime(checkoutDateVal,"%m/%d/%y")
+                        returnDate = checkoutDate + timedelta(days=5)                                                        
+                        msg = Message("Confirmation of suit checkout",
+                                  sender='careerclosetatm@gmail.com',
+                                  recipients=[form1.email.data])
+                        msg.body = """
+                            From: Team Career Closet <%s>,
+                            Howdy, 
+                            This is a confirmation of your suit %s checkout on %s.
+                            Please return the suit before the deadline %s
+                            Gigem.
+                            Team Career Closet.
+                            """ % ('careerclosetatm@gmail.com',form1.suiteId.data.upper(),checkoutDate,returnDate)
+                        mail.send(msg) 
+                        
+                    suits1 = Suits.query.filter(Suits.available==True).all()
+                    suits2 = Suits.query.filter(Suits.available==False).all()
+                    return render_template("dashboard0.html", success = "checkout-success", form1=form1, form2=form2, suits1=suits1, suits2=suits2)
+            elif request.form["checkinButtonClicked"]=="True":
+                print "checkin"
+                if form2.validate() == False:
+                    flash("All fields are required")
+                    return render_template("checkin.html", form2=form2)
+                else:
+                    suits = Suits.query.filter(Suits.suit_id == form2.suiteId.data.upper()).first()                
+                    if suits != None:
+                        suits.available = True
+                        db.session.commit()  
+                        checkinDate = datetime.now().date()
+                        
+                    #suits = Suits.query.filter(Suits.available==False).all()
+                    suits1 = Suits.query.filter(Suits.available==True).all()
+                    suits2 = Suits.query.filter(Suits.available==False).all()
+                    #return render_template("checkin.html", success = True, form2=form2, suits=suits)
+                    return render_template("dashboard0.html", success = "checkin-success", form1=form1, form2=form2, suits1=suits1, suits2=suits2)
+                # do something else
+            
+        elif request.method == "GET":
+            #suits = Suits.query.filter(Suits.available==True).all()
+            suits1 = Suits.query.filter(Suits.available==True).all()
+            suits2 = Suits.query.filter(Suits.available==False).all()                               
+            #return render_template("dashboard0.html", form=form, suits=suits)
+            return render_template("dashboard0.html", form1=form1, form2=form2, suits1=suits1, suits2=suits2)  
+    else:
+        return render_template("home.html")    
+         
 
 @app.route("/dashboard", methods=["GET", "POST"])
 def dashboard():

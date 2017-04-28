@@ -63,7 +63,7 @@ function checkinButton() {
 	                </ul>					
 	                <div id="myTabContent" class="tab-content">
 	                    <div class="tab-pane fade active in" id="service-zero">
-	                        <iframe src="{{url_for('dashboard')}}"></iframe>
+	                       <!-- <iframe src="{{url_for('dashboard')}}"></iframe> -->
 	                        <div class ="tiny">
 														<h1> potato Suit</h1>
 														<form name="CheckoutForm" class = "form-horizontal" action = "{{url_for('dashboard0')}}" method = post>
@@ -99,7 +99,9 @@ function checkinButton() {
 																						<div class="control-group">
 																							<label class="control-label" for="submit"></label>
 																							<div class="controls">
-																								<button id="submit" name="checkout" class="btn btn-primary" onclick="checkoutButton()">Checkout</button>
+																								<!--<button id="submit" name="checkout" class="btn btn-primary" onclick="checkoutButton()">Checkout</button>-->
+																								<input type="submit" id="submit" name="submit" class="btn btn-primary" value="checkout">
+<input type="submit" name="btn" value="Cancel">
 																							</div>
 																						</div>
 															</fieldset>
@@ -111,11 +113,11 @@ function checkinButton() {
 	                    </div>
 	                    <div class="tab-pane fade" id="service-one">
 	                        <div class="row">
-	                        <iframe src="{{url_for('checkin')}}"></iframe>
+	                        <!--<iframe src="{{url_for('checkin')}}"></iframe>-->
 														<div class="tiny">
 															<h1>Checkin Suit</h1>
 															<form name="CheckinForm" class="form-horizontal"
-																action="{{url_for('dashboard0')}}" method=post>
+																action="{{url_for('dashboard1')}}" method=post>
 																{{ form2.hidden_tag() }}
 																<fieldset>
 																	<!-- Sign In Form -->
@@ -137,7 +139,9 @@ function checkinButton() {
 																	<div class="control-group">
 																		<label class="control-label" for="submit"></label>
 																		<div class="controls">
-																			<button id="submit" name="checkin" class="btn btn-primary" onclick="checkinButton()">Checkin</button>
+																		<!-	<button id="submit" name="checkin" class="btn btn-primary" onclick="checkinButton()">Checkin</button> -->
+																			<input type="submit" id="submit" name="submit" class="btn btn-primary" value="checkin">
+																			
 																		</div>
 																	</div>
 																</fieldset>

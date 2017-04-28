@@ -27,11 +27,11 @@ class ContactForm(Form):
 class CheckoutForm(Form):
     suiteId = TextField("suidId", [validators.Required("Please enter a suit ID")])    
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
-    submit = SubmitField("Checkout")
+    submit = SubmitField("checkout")
 
 class CheckinForm(Form):
     suiteId = TextField("suidId", [validators.Required("Please enter a suit ID")])    
-    submit = SubmitField("Checkout")
+    submit = SubmitField("checkin")
 
 
 class SignupForm(Form):    

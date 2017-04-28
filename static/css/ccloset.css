@@ -105,7 +105,7 @@ td, th {
 }
  /*Mascot's Text Box*/
 .mascot-callout{
-  
+
 }
 
 .bubble
@@ -289,16 +289,14 @@ fieldset[disabled] .btn-label.focus {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-iframe{ 
-    outline: none;
+iframe{
+    border: none;
     display:block;
-    min-width:100%;
+    margin:auto;
+    max-width:380px;
     height: 800px;
 }
 
-iframe[seamless] { 
-    display: block;
-}
 
 /* Tiny Container*/
 .tiny {
@@ -308,6 +306,15 @@ iframe[seamless] {
   align-items: center;
   text-align: left;
 }
+.tiny button{
+  text-align: center;
+}
+/*select{
+  width: 100%;
+}
+.cbutton{
+  margin: auto;
+}*/
 
 /*@media (min-width: 768px) {
   .container {

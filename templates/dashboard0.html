@@ -51,25 +51,23 @@ function checkinButton() {
 	<!-- Service Tabs -->
 	        <div class="row">
 	            <div class="col-lg-12">
-	                
+
 	            </div>
 	            <div class="col-md-12">
 
 	                <ul id="myTab" class="nav nav-tabs nav-justified">
-	                    <li class="active"><a href="#service-zero" data-toggle="tab"><i class="fa fa-tree"></i> Check Out</a>
+	                    <li class="active"><a href="#service-zero" data-toggle="tab"><i class="fa fa-shopping-cart"></i> Check Out</a>
 	                    </li>
-	                    <li class=""><a href="#service-one" data-toggle="tab"><i class="fa fa-tree"></i> Check In</a>
+	                    <li class=""><a href="#service-one" data-toggle="tab"><i class="fa fa-check-circle"></i> Check In</a>
 	                    </li>
-	                </ul>					
+	                </ul>
 	                <div id="myTabContent" class="tab-content">
 	                    <div class="tab-pane fade active in" id="service-zero">
-	                       <!-- <iframe src="{{url_for('dashboard')}}"></iframe> -->
-	                        <div class ="tiny">
-														<h1> potato Suit</h1>
+	                      <div class ="tiny">
 														<form name="CheckoutForm" class = "form-horizontal" action = "{{url_for('dashboard0')}}" method = post>
 															{{ form1.hidden_tag() }}
 															<fieldset>
-															
+
 															<input type="hidden" name="checkoutButtonClicked" id="checkoutButtonClicked" value="False">
 															<input type="hidden" name="checkinButtonClicked" id="checkinButtonClicked" value="False">
 																						<!-- Sign In Form -->
@@ -78,7 +76,7 @@ function checkinButton() {
 																							<label class="control-label" for="email">Suit Id:</label>
 																							<div class="controls">
 																								<!-- <input required="" id="suiteId" name="suiteId" type="text" class="form-control" placeholder="Enter suit id" class="input-medium" required>-->
-																								<select name="suiteId" id="suiteId">
+																								<select name="suiteId" id="suiteId" class="form-control">
 																									<option value="" disabled selected>Select SuitID to Checkout</option>
 																									{% for suit in suits1 %}
 																										<option value="{{suit.suit_id}}">{{suit.suit_id}}</option>
@@ -99,23 +97,19 @@ function checkinButton() {
 																						<div class="control-group">
 																							<label class="control-label" for="submit"></label>
 																							<div class="controls">
-																								<!--<button id="submit" name="checkout" class="btn btn-primary" onclick="checkoutButton()">Checkout</button>-->
-																								<input type="submit" id="submit" name="submit" class="btn btn-primary" value="checkout">
-<input type="submit" name="btn" value="Cancel">
+																								<input type="submit" id="submit" name="submit" class="btn btn-primary" value="Check Out">
 																							</div>
 																						</div>
 															</fieldset>
 
 														</form>
 														</div>
-													
+
 
 	                    </div>
 	                    <div class="tab-pane fade" id="service-one">
 	                        <div class="row">
-	                        <!--<iframe src="{{url_for('checkin')}}"></iframe>-->
-														<div class="tiny">
-															<h1>Checkin Suit</h1>
+	                        	<div class="tiny">
 															<form name="CheckinForm" class="form-horizontal"
 																action="{{url_for('dashboard1')}}" method=post>
 																{{ form2.hidden_tag() }}
@@ -126,7 +120,7 @@ function checkinButton() {
 																		<label class="control-label" for="email">Suit Id:</label>
 																		<div class="controls">
 																			<!-- <input required="" id="suiteId" name="suiteId" type="text" class="form-control" placeholder="Enter suit id" class="input-medium" required>-->
-																			<select name="suiteId" id="suiteId">
+																			<select name="suiteId" id="suiteId" class="form-control">
 																				<option value="" disabled selected>Select SuitID to
 																					Checkin</option> {% for suit in suits2 %}
 																				<option value="{{suit.suit_id}}">{{suit.suit_id}}</option> {%
@@ -139,9 +133,7 @@ function checkinButton() {
 																	<div class="control-group">
 																		<label class="control-label" for="submit"></label>
 																		<div class="controls">
-																		<!-	<button id="submit" name="checkin" class="btn btn-primary" onclick="checkinButton()">Checkin</button> -->
-																			<input type="submit" id="submit" name="submit" class="btn btn-primary" value="checkin">
-																			
+																			<input type="submit" id="submit" name="submit" class="btn btn-primary" value="Check In">
 																		</div>
 																	</div>
 																</fieldset>

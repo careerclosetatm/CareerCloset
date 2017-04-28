@@ -4,6 +4,9 @@ from wtforms import TextField, TextAreaField, SubmitField, validators, Validatio
 from models import db, User
 
 class ContactForm(Form):
+    """Form with the user information to send email from the contact screen 
+    """ 
+
     name = TextField("Name", [validators.Required("Please enter a name")])
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
     phone = TextField("Phone", [validators.Required("Please enter a phone number")])
@@ -14,6 +17,9 @@ class ContactForm(Form):
         Form.__init__(self, *args, **kwargs)
     
     def validate(self):
+        """Validates the values in the contact form. 
+        """ 
+
         if not Form.validate(self):            
             return False
  
@@ -23,18 +29,24 @@ class ContactForm(Form):
             return False
         else:
             return True
-    
+   
 class CheckoutForm(Form):
+    """Form with the suit information and user information while checking out. 
+    """ 
     suiteId = TextField("suidId", [validators.Required("Please enter a suit ID")])    
     email = TextField("Email", [validators.Required("Please enter a email"), validators.Email("Please enter a valid email")])
     submit = SubmitField("checkout")
 
 class CheckinForm(Form):
+    """Form with the suit information while checking in. 
+    """ 
     suiteId = TextField("suidId", [validators.Required("Please enter a suit ID")])    
     submit = SubmitField("checkin")
 
 
-class SignupForm(Form):    
+class SignupForm(Form):  
+    """Form with the user information while signing up. 
+    """ 
     username = TextField("Username",  [validators.Required("Please enter your preferred username.")])
     fullname = TextField("Full name",  [validators.Required("Please enter your full name.")])    
     email = TextField("Email",  [validators.Required("Please enter your email address."), validators.Email("Please enter a valid email address.")])
@@ -46,6 +58,8 @@ class SignupForm(Form):
         Form.__init__(self, *args, **kwargs)
     
     def validate(self):
+        """Validates the values in the sign up form. 
+        """ 
         if not Form.validate(self):            
             return False
  
@@ -56,7 +70,9 @@ class SignupForm(Form):
         else:
             return True
         
-class SigninForm(Form):    
+class SigninForm(Form): 
+    """Form with the sign in information of user. 
+    """ 
     email = TextField("Email",  [validators.Required("Please enter your email address."), validators.Email("Please enter a valid email address.")])
     password = PasswordField('Password', [validators.Required("Please enter a password.")])
     submit = SubmitField("Sign In")
@@ -65,6 +81,8 @@ class SigninForm(Form):
         Form.__init__(self, *args, **kwargs)
     
     def validate(self):
+        """Validates the values in the sign in form. 
+        """         
         if not Form.validate(self):
             return False
        
@@ -76,11 +94,15 @@ class SigninForm(Form):
             return False
         
 class AvailabilityForm(Form):
+    """Form with the information of suit type to check availability. 
+    """ 
     gender = TextField('Gender', [validators.Required("Please enter a gender.")])
     type = TextField('Type', [validators.Required("Please enter a suit type.")])
     submit = SubmitField("Search Availability")
 
 class AppointmentForm():
+    """Form with the time and date to book an appointment. 
+    """ 
     preference = TextField("Preference")
     date_val = DateField("date_val", [validators.Required("Please enter a date.")])
     time_val = DateField("time_val", [validators.Required("Please enter a time.")])

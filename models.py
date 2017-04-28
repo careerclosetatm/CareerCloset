@@ -6,6 +6,8 @@ from datetime import datetime
 db = SQLAlchemy()
 
 class User(db.Model):
+    """Creates the users table. Sets the corresponding model values. 
+    """ 
     __tablename__ = "tbl_users"
     user_id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(100))
@@ -28,6 +30,8 @@ class User(db.Model):
         return check_password_hash(self.pwdhash, password)
     
 class Suits(db.Model):
+    """Creates the suits table. Sets the corresponding model values. 
+    """ 
     __tablename__ = "tbl_suits"
     suit_id = db.Column(db.String(100),primary_key=True)
     gender = db.Column(db.String(10))
@@ -43,6 +47,8 @@ class Suits(db.Model):
         self.available = available
 
 class Order(db.Model):
+    """Creates the Orders table. Sets the corresponding model values. 
+    """ 
     __tablename__ = "tbl_order"
     order_id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer)
@@ -62,6 +68,8 @@ class Order(db.Model):
         self.checkout_date = checkout_date.title()
         
 class Appointment(db.Model):
+    """Creates the Appointment table. Sets the corresponding model values. 
+    """ 
     __tablename__ = "tbl_appointment"
     appointment_id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer)
@@ -75,6 +83,9 @@ class Appointment(db.Model):
 
         
 class Schedule(db.Model):
+    """Creates the Schedule table. Sets the corresponding model values. 
+    """ 
+
     __tablename__ = "tbl_schedule"
     date_Value = db.Column(db.Date, primary_key = True)
     time9_00 = db.Column(db.Boolean)

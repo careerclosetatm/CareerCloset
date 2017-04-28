@@ -12,7 +12,12 @@ mail = Mail()
 app = Flask(__name__)
 
 @app.route("/")
+
+
+
 def home():
+    """Renders a template to take the user to the home screen.
+    """    
     if "email" in session:        
         user = User.query.filter_by(email = session["email"]).first()
         if user is None:
@@ -21,10 +26,16 @@ def home():
 
 @app.route("/donate")
 def donate():
+    """Renders a template to take the user to the Donate Screen.
+    """ 
     return render_template("donate.html")
 
 @app.route("/dashboard0", methods=["GET", "POST"])
 def dashboard0():
+    """Renders a template to take the user to the Dash board Screen. 
+     If the user is not logged in as admin, takes the user to the sign in screen.
+     Also, updates the database with the suit that has been checked out.
+    """ 
     if "email" not in session:
         session['path'] = request.url
         return redirect(url_for("signin"))
@@ -97,8 +108,12 @@ def dashboard0():
             return render_template("dashboard0.html", form1=form1, form2=form2, suits1=suits1, suits2=suits2)  
     else:
         return render_template("home.html")  
-@app.route("/dashboard1", methods=["GET", "POST"])    
+@app.route("/dashboard1", methods=["GET", "POST"]) 
+   
 def dashboard1():
+    """Renders a template to take the user to the Dash board Screen for the check in functionality. 
+     If the user is not logged in as admin, takes the user to the sign in screen.
+    """    
     if "email" not in session:
         session['path'] = request.url
         return redirect(url_for("signin"))
@@ -139,53 +154,7 @@ def dashboard1():
     else:
         return render_template("home.html")    
   
-         
-
-@app.route("/dashboard", methods=["GET", "POST"])
-def dashboard():
-    if "email" not in session:
-        session['path'] = request.url
-        return redirect(url_for("signin"))
-    user = User.query.filter_by(email = session["email"]).first()
-    #print(user)
-    if user is None:
-        session['path'] = request.url
-        return redirect(url_for("signin"))
-    elif user.email =="careerclosetatm@gmail.com":
-        form = CheckoutForm()
-        if request.method == "POST":
-            if form.validate() == False:
-                flash("All fields are required")
-                return render_template("dashboard.html", form=form)
-            else:
-                suits = Suits.query.filter(Suits.suit_id == form.suiteId.data.upper()).first()                
-                if suits != None:
-                    suits.available = False
-                    db.session.commit()  
-                    checkoutDate = datetime.now().date()
-                    #checkoutDate = datetime.strptime(checkoutDateVal,"%m/%d/%y")
-                    returnDate = checkoutDate + timedelta(days=5)                                                        
-                    msg = Message("Confirmation of suit checkout",
-                              sender='careerclosetatm@gmail.com',
-                              recipients=[form.email.data])
-                    msg.body = """
-                        From: Team Career Closet <%s>,
-                        Howdy, 
-                        This is a confirmation of your suit %s checkout on %s.
-                        Please return the suit before the deadline %s
-                        Gigem.
-                        Team Career Closet.
-                        """ % ('careerclosetatm@gmail.com',form.suiteId.data.upper(),checkoutDate,returnDate)
-                    mail.send(msg) 
-                    
-                suits = Suits.query.filter(Suits.available==True).all()
-                return render_template("dashboard.html", success = True, form=form, suits=suits)
-        elif request.method == "GET":
-            suits = Suits.query.filter(Suits.available==True).all()                               
-            return render_template("dashboard.html", form=form, suits=suits)  
-    else:
-        return render_template("home.html")
-    
+             
 
 @app.route("/checkin", methods=["GET", "POST"])
 def checkin():
@@ -222,6 +191,10 @@ def checkin():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """Renders a template to take the user to the sign up Screen upon Get request. 
+     Takes the user to the Home screen upon Post request after the sign up.
+     Also, updates the database with the details of the signed up user.
+    """ 
     form = SignupForm()   
     if request.method == 'POST':        
         if form.validate() == False:                   
@@ -245,7 +218,10 @@ def signup():
 @app.route('/signin', methods=['GET', 'POST'])
 def signin():
     form = SigninForm()
-   
+    """Renders a template to take the user to the sign-in Screen upon Get request. 
+     Takes the user to the Home screen upon Post request if the there is no redirect url present in the session.
+     Takes the user to the redirect url stored in the session upon post request, if the redirect url is not empty.
+    """ 
     if request.method == 'POST':
         if form.validate() == False:
             return render_template('signin.html', form=form)
@@ -268,7 +244,10 @@ def signin():
         return render_template('signin.html', form=form)
 
 @app.route('/signout')
-def signout(): 
+def signout():
+    """Renders a template to take the user to the Home up Screen.
+    """ 
+ 
     if 'email' not in session:
         #session['path'] = request.url
         return redirect(url_for('signin'))
@@ -278,6 +257,10 @@ def signout():
 
 @app.route("/availability", methods=["GET"])
 def availability():
+    """Renders a template to take the user to the Availability Screen. 
+    Fetches the list of suit from the database based on the choice of the suit type.
+    """ 
+
     form = AvailabilityForm()       
     suits = Suits.query.filter().all()
     #total count
@@ -360,6 +343,10 @@ def learn():
 
 @app.route("/appointment", methods=['GET', 'POST'])
 def appointment():
+    """Renders a template to take the user to the Appointment screen. 
+     Upon Post request updates the time field in the database for the appointment scheduled. Also, sends out an email to the user
+     as a confirmation of the appointment.  
+    """ 
     if "email" not in session:
         session['path'] = request.url
         return redirect(url_for("signin"))
@@ -406,11 +393,18 @@ Team Career Closet.
     
 @app.route("/404")
 def error():
+    """Renders a template to take the user to the 404 Screen upon hitting an error page. 
+    """ 
     return render_template("404.html")
 
 
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
+    """Renders a template to take the user to the Contact Screen. 
+     Takes the user to the Contact screen upon Get request.
+     Also, sends an email to careerclosetatm@gmail.com if the users has any information to share with the Career Closet.
+    """ 
+
     form = ContactForm()
     
     if request.method == "POST":
@@ -447,6 +441,8 @@ with app.test_request_context():
     #Creating schedule DB
     db.create_all()
     '''
+    Data inserted in the database for appointment and suit information.
+    
     schedule1=Schedule("2017-04-06",False,True,True,True,False,True,True,True,True,True,True,True,False,True,True,True,True)
     schedule2=Schedule("2017-04-07",True,True,False,True,True,True,False,False,True,True,True,True,True,True,True,True,True)
     schedule3=Schedule("2017-04-10",True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True,True)

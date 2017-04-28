@@ -5109,9 +5109,10 @@ a.thumbnail.active {
   color: #245269;
 }
 .alert-warning {
-  color: #8a6d3b;
+  color: #500000;
   background-color: #fcf8e3;
   border-color: #faebcc;
+  max-width: 100%;
 }
 .alert-warning hr {
   border-top-color: #f7e1b5;

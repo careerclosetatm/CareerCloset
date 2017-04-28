@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 
-        <!-- Mascot-Callout -->
+    <!-- Mascot-Callout -->
     <div class="mascot-callout">
        <p class="bubble"><em>"Top of the morning to you, {% if 'email' in session %}<strong>{{ session["fullname"] }}</strong> {% endif %} ol' chap, could I perhaps interest you in a cup of tea?"</em></p>
     </div>
@@ -92,18 +92,5 @@
 
         <hr>
     </div>
-
-
- <!--
-  <div class="jumbo">
-    <h3>
-    {% if "email" not in session %} Please sign in or sign up {% endif %}
-    </h3>
-    <h2>Welcome to Career closet {% if "email" in session %} {{ session["email"].split("@")[0] }} {% endif %}
-    <h2>
-    <h3>This website will let you take suits for any events<h3>
-
-  </div>
-
-  -->
+ 
 {% endblock %}

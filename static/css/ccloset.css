@@ -4,7 +4,7 @@ body {
 }
 
 body {
-    padding-top: 75px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 75px; /* Padding for fixed navbar */
 }
 
 .img-portfolio {
@@ -100,14 +100,8 @@ td, th {
   border: 1px solid #ccc;
   text-align: left;
 }
-#mascot-right{
-  display: none;
-}
- /*Mascot's Text Box*/
-.mascot-callout{
 
-}
-
+/* Macot Speech Bubble*/
 .bubble
 {
 position: relative;
@@ -193,7 +187,10 @@ canvas {
         height: auto;
     }
 }
-/* Mascot & textbox's  responsive design */
+/* Mascot textbox responsive design scale according to width of screen */
+#mascot-right{
+  display: none;
+}
 @media(max-width:767px) {
   #mascot-right{
     display: block !important;
@@ -220,12 +217,13 @@ canvas {
   left: 90%;
   }
 }
+/* Mascot textbox & Carousel negative margin to go beyond the container defaults */
 #myCarousel, .bubble:after{
   margin-left: -15px;
   margin-right: -15px;
 }
 
-/*label buttons*/
+/*buttons for appointment page*/
 .btn-label {
   color: #500000;
   background-color: #fff;
@@ -289,57 +287,33 @@ fieldset[disabled] .btn-label.focus {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-iframe{
-    border: none;
-    display:block;
-    margin:auto;
-    max-width:380px;
-    height: 800px;
-}
-
-
-/* Tiny Container*/
+/* / Appointment button formats */
+/* Tiny Container to add responsiveness to small forms and center content - This keeps forms at full screen width for phones and ceters it for large screens */
 .tiny {
   margin-right: auto;
   margin-left: auto;
-  max-width: 380px;
+  max-width:100% ;
   align-items: center;
   text-align: left;
 }
-.tiny button{
-  text-align: center;
+@media (min-width: 480px) {
+  .tiny {
+    width: 75.6666666666%;
+  }
 }
-/*select{
-  width: 100%;
-}
-.cbutton{
-  margin: auto;
-}*/
-
-/*@media (min-width: 768px) {
-  .container {
-    width: 750px;
+@media (min-width: 768px) {
+  .tiny {
+    width: 50.6666666666%;
   }
 }
 @media (min-width: 992px) {
-  .container {
-    width: 970px;
+  .tiny {
+    width: 40%;
   }
 }
 @media (min-width: 1200px) {
-  .container {
-    width: 1170px;
+  .tiny {
+    width: 32.4786325%;
   }
-}*/
-
-/*Login Modal Module - Will Test again for final prototype
-.prettyline {
-  height: 5px;
-  border-top: 0;
-  background: #c4e17f;
-  border-radius: 5px;
-  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-}*/
+}
+/* /.Tiny Container  */

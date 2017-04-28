@@ -13,7 +13,7 @@
 <!-- Bootstrap Core CSS -->
 <link href=" {{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 
-<!-- Custom CSS -->
+<!-- Custom CSS and CSS for Appointment Date Picker -->
 <link href="{{ url_for('static', filename='css/ccloset.css') }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
@@ -22,7 +22,6 @@
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -35,7 +34,7 @@
 	<!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
-          <!-- Brand and toggle get grouped for better mobile display -->
+          <!-- Navbar Brand Mascot and Toggle are grouped for better mobile display -->
           <div class="navbar-header">
               <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                   <span class="sr-only">Toggle navigation</span>
@@ -51,7 +50,7 @@
           </div>
 
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
+          <!-- Nav Links for Toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-left">
                   <li>
@@ -73,8 +72,9 @@
                     <a href="{{ url_for('dashboard0') }}">Dashboard</a>
                     {% endif %}
                   </li>
-                  
+
               </ul>
+              <!-- Sign Up Links -->
               <ul class="nav navbar-nav navbar-right">
               	<li>
                    	{% if 'email' not in session %}
@@ -97,10 +97,10 @@
       </div>
       <!-- /.container -->
   </nav>
-
+<!-- All Page contents will come inside the container fluid -->
 	<div class="container-fluid">{% block content %} {% endblock %}</div>
 
-
+<!-- Footer area -->
   <footer class="text-center">
     <div class="footer-above">
       <div class="container-fluid">
@@ -109,7 +109,8 @@
               <h3>Address</h3>
               <p>MSC Room L428
                 <br>Texas A&M University
-                  <br>College Station, TX 77843</p>
+                <br>College Station, TX 77843
+              </p>
           </div>
           <div class="footer-col col-md-4">
               <h3>Follow Us</h3>
@@ -150,12 +151,11 @@
 
     <!-- Bootstrap Core JavaScript-->
     <script src="..\static\js\bootstrap.min.js"></script>
+    <!-- carousel speed control -->
     <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
     </script>
-
-
 </body>
 </html>

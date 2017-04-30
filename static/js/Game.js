@@ -50,7 +50,7 @@ SI.Game.prototype.initializeCanvas = function () {
 	this.ctx.canvas.width = SI.Sizes.width;
 	this.ctx.font = SI.Sizes.font;
 }
-
+/* Adding Touch support and keyboard controls to work while ignoring double tap to zoom and other browser default behavior*/
 SI.Game.prototype.attachKeyboardEvents = function() {
 	var self = this;
 	$(document).keydown(function (e) {
